@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+
 import bean.Teacher;
 
 public class TeacherDao {
@@ -22,7 +23,6 @@ public class TeacherDao {
             return null;
         }
 
-        // 正しい接続順序（try-with-resources文）
         try (
             Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement pStmt = conn.prepareStatement(sql)
