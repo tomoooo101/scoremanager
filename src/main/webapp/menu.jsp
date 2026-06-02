@@ -1,9 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="bean.Teacher" %>
+<%
+    Teacher user = (Teacher) session.getAttribute("user");
+    String userName = (user != null) ? user.getName() : "ゲスト";
+%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>得点管理システム - 学生情報登録</title>
+    <title>得点管理システム - メニュー</title>
     <style>
         body { font-family: sans-serif; margin: 0; }
         header { background-color: #e6f2ff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
@@ -12,75 +17,47 @@
         .side-menu ul { list-style: none; padding: 0; }
         .side-menu li { margin-bottom: 10px; }
         .side-menu a { text-decoration: none; color: #0066cc; }
-        .side-menu a:hover { text-decoration: underline; }
-        .main-content { flex-grow: 1; padding: 20px; background-color: #fff; }
-        .form-area { background-color: #f5f5f5; padding: 20px; border-radius: 5px; max-width: 800px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], select { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        .btn { background-color: #666; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; }
+        .main-content { flex-grow: 1; padding: 40px; background-color: #fff; }
+        .menu-area { max-width: 400px; margin: 0 auto; }
+        .menu-title { font-size: 20px; font-weight: bold; margin-bottom: 25px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
+        .menu-group { display: flex; flex-direction: column; gap: 15px; }
+        .menu-btn { display: block; background-color: #666; color: white; padding: 15px; border: none; border-radius: 4px; text-align: center; text-decoration: none; font-weight: bold; font-size: 16px; }
+        .menu-btn:hover { background-color: #444; }
     </style>
 </head>
 <body>
 
 <header>
     <h1>得点管理システム</h1>
-    <div>テスト様 <a href="Logout.action" style="text-decoration: none; color: #0066cc;">ログアウト</a></div>
+    <div><%= userName %>様 <a href="${pageContext.request.contextPath}/Login.action" style="text-decoration: none; color: #0066cc;">ログアウト</a></div>
 </header>
 
 <div class="container">
     <nav class="side-menu">
         <ul>
-            <li><a href="Menu.action">メニュー</a></li>
-            <li><a href="StudentList.action">学生管理</a></li>
+            <li><a href="${pageContext.request.contextPath}/menu.jsp">メニュー</a></li>
+            <li><a href="${pageContext.request.contextPath}/StudentCreate.action">学生管理</a></li>
             <li>成績管理
                 <ul style="padding-left: 15px;">
-                    <li><a href="TestRegist.action">成績登録</a></li>
-                    <li><a href="TestList.action">成績参照</a></li>
+                    <li><a href="#">成績登録</a></li>
+                    <li><a href="#">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="SubjectList.action">科目管理</a></li>
+            <li><a href="#">科目管理</a></li>
         </ul>
     </nav>
 
     <main class="main-content">
-        <h2>学生情報登録</h2>
-        <div class="form-area">
-            <form action="StudentCreateExecute.action" method="post">
-                <div class="form-group">
-                    <label>入学年度</label>
-                    <select name="ent_year">
-                        <option value="">--------</option>
-                        <option value="2026">2026</option>
-                        <option value="2025">2025</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>学生番号</label>
-                    <input type="text" name="no" placeholder="学生番号を入力してください">
-                </div>
-
-                <div class="form-group">
-                    <label>氏名</label>
-                    <input type="text" name="name" placeholder="氏名を入力してください">
-                </div>
-
-                <div class="form-group">
-                    <label>クラス</label>
-                    <select name="class_num">
-                        <option value="101">101</option>
-                        <option value="102">102</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn">登録して終了</button>
-            </form>
+        <div class="menu-area">
+            <div class="menu-title">メニュー</div>
+            <div class="menu-group">
+                <a href="${pageContext.request.contextPath}/StudentCreate.action" class="menu-btn">学生管理（登録へ）</a>
+                <a href="#" class="menu-btn">成績管理</a>
+                <a href="#" class="menu-btn">科目管理</a>
+            </div>
         </div>
-        <br>
-        <a href="StudentList.action" style="text-decoration: none; color: #0066cc;">戻る</a>
     </main>
 </div>
 
 </body>
-</html>		
+</html>

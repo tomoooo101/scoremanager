@@ -9,7 +9,7 @@ import bean.Teacher;
 public class TeacherDao {
     private final String URL = "jdbc:postgresql://localhost:5432/kadai";
     private final String USER = "postgres";
-    private final String PASSWORD = "password"; // ★ご自身のパスワードに変更
+    private final String PASSWORD = "password"; // ★ご自身のPostgreSQLのパスワードに修正
 
     public Teacher login(String id, String password) {
         Teacher teacher = null;
@@ -22,7 +22,6 @@ public class TeacherDao {
             return null;
         }
 
-        // 正しい接続順序（try-with-resources文）
         try (
             Connection conn = DriverManager.getConnection(URL, USER, PASSWORD);
             PreparedStatement pStmt = conn.prepareStatement(sql)
