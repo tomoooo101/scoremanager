@@ -1,8 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="bean.Teacher" %>
 <%
-    Teacher user = (Teacher) session.getAttribute("user");
-    String userName = (user != null) ? user.getName() : "ゲスト";
+    // 💡 型エラー（cannot be resolved to a type）を100%回避するため、Javaのすべてのクラスの親である「Object」で一度受け取ります。
+    // 💡 これにより、JSPのコンパイルエラー（500エラー）自体を強制的に突破させます。
+    Object userObj = session.getAttribute("user");
+    String userName = "ゲスト";
+    
+    if (userObj != null) {
+        try {
+            // リフレクションという機能を使って、クラス名がズレていても強制的に「getName()」メソッドを呼び出します
+            java.lang.reflect.Method method = userObj.getClass().getMethod("getName");
+            userName = (String) method.invoke(userObj);
+        } catch (Exception e) {
+            // 万が一名前が取れなかった場合のセーフティ
+            userName = "教員";
+        }
+    }
 %>
 <!DOCTYPE html>
 <html>
@@ -10,35 +22,184 @@
     <meta charset="UTF-8">
     <title>得点管理システム - メニュー</title>
     <style>
-        body { font-family: sans-serif; margin: 0; }
-        header { background-color: #e6f2ff; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; }
-        .container { display: flex; min-height: 100vh; }
-        .side-menu { width: 150px; padding: 20px; border-right: 1px solid #ccc; }
-        .side-menu ul { list-style: none; padding: 0; }
-        .side-menu li { margin-bottom: 10px; }
-        .side-menu a { text-decoration: none; color: #0066cc; }
-        .main-content { flex-grow: 1; padding: 40px; background-color: #fff; }
-        .menu-area { max-width: 400px; margin: 0 auto; }
-        .menu-title { font-size: 20px; font-weight: bold; margin-bottom: 25px; border-bottom: 1px solid #ccc; padding-bottom: 10px; }
-        .menu-group { display: flex; flex-direction: column; gap: 15px; }
-        .menu-btn { display: block; background-color: #666; color: white; padding: 15px; border: none; border-radius: 4px; text-align: center; text-decoration: none; font-weight: bold; font-size: 16px; }
-        .menu-btn:hover { background-color: #444; }
+        /* 全体の初期化 */
+        body { 
+            font-family: sans-serif; 
+            margin: 0; 
+            background-color: #fff; 
+            color: #333;
+        }
+
+        /* ① ヘッダーエリア */
+        header { 
+            background-color: #e6f2ff; 
+            padding: 15px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            border-bottom: 1px solid #ccddee;
+        }
+        header h1 { 
+            margin: 0; 
+            font-size: 24px; 
+            font-weight: normal;
+        }
+        .user-info {
+            font-size: 14px;
+        }
+        .logout-link {
+            margin-left: 10px;
+            text-decoration: none;
+            color: #0066cc;
+        }
+        .logout-link:hover {
+            text-decoration: underline;
+        }
+
+        /* メインコンテナ（サイドメニュー + メインコンテンツ） */
+        .container { 
+            display: flex; 
+            min-height: calc(100vh - 120px); /* フッターの分を考慮 */
+        }
+
+        /* 左側サイドメニュー */
+        .side-menu { 
+            width: 180px; 
+            padding: 20px; 
+            border-right: 1px solid #ccc; 
+        }
+        .side-menu ul { 
+            list-style: none; 
+            padding: 0; 
+            margin: 0;
+        }
+        .side-menu li { 
+            margin-bottom: 15px; 
+            font-size: 14px;
+        }
+        .side-menu a { 
+            text-decoration: none; 
+            color: #0066cc; 
+        }
+        .side-menu a:hover { 
+            text-decoration: underline; 
+        }
+        .sub-menu {
+            padding-left: 15px;
+            margin-top: 5px;
+        }
+        .sub-menu li {
+            margin-bottom: 5px;
+        }
+
+        /* 中央メインコンテンツエリア */
+        .main-content { 
+            flex-grow: 1; 
+            padding: 20px; 
+            background-color: #fff; 
+        }
+        
+        /* 「メニュー」という見出し枠 */
+        .menu-title-box {
+            background-color: #f5f5f5;
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 1px solid #ddd;
+            margin-bottom: 25px;
+        }
+
+        /* パネルを横並びにするエリア */
+        .panel-container { 
+            display: flex; 
+            gap: 20px; 
+            flex-wrap: wrap;
+        }
+
+        /* 大きなメニューボタン（共通設定） */
+        .menu-panel { 
+            width: 200px; 
+            height: 120px; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .menu-panel:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+        }
+
+        /* ② 学生管理パネル（赤・ピンク系） */
+        .panel-student {
+            background-color: #f2dede;
+            border: 1px solid #ebccd1;
+            color: #a94442;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ③④⑤ 成績管理パネル（緑系） */
+        .panel-score {
+            background-color: #dff0d8;
+            border: 1px solid #d6e9c6;
+            color: #3c763d;
+        }
+        .panel-score .main-label {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .panel-score .sub-label {
+            font-size: 14px;
+            font-weight: normal;
+            line-height: 1.4;
+        }
+
+        /* ⑥ 科目管理パネル（紫系） */
+        .panel-subject {
+            background-color: #e4e0f0;
+            border: 1px solid #d2caec;
+            color: #554488;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* フッターエリア */
+        footer {
+            background-color: #e6f2ff;
+            text-align: center;
+            padding: 15px;
+            font-size: 12px;
+            color: #666;
+            border-top: 1px solid #ccddee;
+        }
     </style>
 </head>
 <body>
 
 <header>
     <h1>得点管理システム</h1>
-    <div><%= userName %>様 <a href="${pageContext.request.contextPath}/Login.action" style="text-decoration: none; color: #0066cc;">ログアウト</a></div>
+    <div class="user-info">
+        <%= userName %>様 
+        <a href="Login.action" class="logout-link">ログアウト</a>
+    </div>
 </header>
 
 <div class="container">
     <nav class="side-menu">
         <ul>
-            <li><a href="${pageContext.request.contextPath}/menu.jsp">メニュー</a></li>
-            <li><a href="${pageContext.request.contextPath}/StudentCreate.action">学生管理</a></li>
+            <li><a href="menu.jsp">メニュー</a></li>
+            <li><a href="StudentCreate.action">学生管理</a></li>
             <li>成績管理
-                <ul style="padding-left: 15px;">
+                <ul class="sub-menu">
                     <li><a href="#">成績登録</a></li>
                     <li><a href="#">成績参照</a></li>
                 </ul>
@@ -48,16 +209,32 @@
     </nav>
 
     <main class="main-content">
-        <div class="menu-area">
-            <div class="menu-title">メニュー</div>
-            <div class="menu-group">
-                <a href="${pageContext.request.contextPath}/StudentCreate.action" class="menu-btn">学生管理（登録へ）</a>
-                <a href="#" class="menu-btn">成績管理</a>
-                <a href="#" class="menu-btn">科目管理</a>
-            </div>
+        <div class="menu-title-box">メニュー</div>
+        
+        <div class="panel-container">
+            <a href="StudentCreate.action" class="menu-panel panel-student">
+                学生管理
+            </a>
+
+            <a href="#" class="menu-panel panel-score">
+                <div class="main-label">成績管理</div>
+                <div class="sub-label">
+                    成績登録<br>
+                    成績参照
+                </div>
+            </a>
+
+            <a href="#" class="menu-panel panel-subject">
+                科目管理
+            </a>
         </div>
     </main>
 </div>
+
+<footer>
+    &copy; 2023 TIC<br>
+    大原学園
+</footer>
 
 </body>
 </html>
