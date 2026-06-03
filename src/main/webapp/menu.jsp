@@ -1,19 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-    // 💡 型エラー（cannot be resolved to a type）を100%回避するため、Javaのすべてのクラスの親である「Object」で一度受け取ります。
-    // 💡 これにより、JSPのコンパイルエラー（500エラー）自体を強制的に突破させます。
-    Object userObj = session.getAttribute("user");
+    // 💡 画面が真っ白になるのを防ぐため、極限まで安全な書き方に変更しました。
     String userName = "ゲスト";
     
-    if (userObj != null) {
-        try {
-            // リフレクションという機能を使って、クラス名がズレていても強制的に「getName()」メソッドを呼び出します
+    try {
+        Object userObj = session.getAttribute("user");
+        if (userObj != null) {
+            // リフレクションで getName() メソッドを探して名前を取得
             java.lang.reflect.Method method = userObj.getClass().getMethod("getName");
-            userName = (String) method.invoke(userObj);
-        } catch (Exception e) {
-            // 万が一名前が取れなかった場合のセーフティ
-            userName = "教員";
+            Object result = method.invoke(userObj);
+            if (result != null) {
+                userName = result.toString();
+            }
         }
+    } catch (Exception e) {
+        // 万が一裏でエラーが起きても、処理を止めずに「教員」として画面を絶対に表示させる
+        userName = "教員";
     }
 %>
 <!DOCTYPE html>
@@ -204,7 +206,7 @@
                     <li><a href="#">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="#">科目管理</a></li>
+            <li><a href="SubjectList.action">科目管理</a></li>
         </ul>
     </nav>
 
@@ -224,7 +226,7 @@
                 </div>
             </a>
 
-            <a href="#" class="menu-panel panel-subject">
+            <a href="SubjectList.action" class="menu-panel panel-subject">
                 科目管理
             </a>
         </div>
