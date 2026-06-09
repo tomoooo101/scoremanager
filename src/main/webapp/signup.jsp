@@ -22,7 +22,7 @@
     <h2>アカウント新規登録</h2>
     <form action="SignUp.action" method="post">
         <div class="field">
-            <label>教員ID（アカウント名）</label>
+            <label>ログインID</label>
             <input type="text" name="id" required>
         </div>
         <div class="field">
