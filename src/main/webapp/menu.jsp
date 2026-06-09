@@ -214,7 +214,7 @@
         <div class="menu-title-box">メニュー</div>
         
         <div class="panel-container">
-            <a href="StudentCreate.action" class="menu-panel panel-student">
+            <a href="StudentList.action" class="menu-panel panel-student">
                 学生管理
             </a>
 
