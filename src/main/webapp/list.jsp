@@ -106,11 +106,11 @@ select {
 <div class="container">
 
     <nav class="sidebar">
-        <a href="#">メニュー</a>
-        <a href="#">学生管理</a>
-        <a href="#">成績管理</a>
-        <a href="#">成績参照</a>
-        <a href="#">科目管理</a>
+        <a href="menu.jsp">メニュー</a>
+        <a href="student_list.jsp">学生管理</a>
+        <a href="subject_list.jsp">成績管理</a>
+        <a href="grade.jsp">成績参照</a>
+        <a href="s_list.jsp">科目管理</a>
     </nav>
 
     <main class="main-content">
