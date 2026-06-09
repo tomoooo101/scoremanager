@@ -60,7 +60,7 @@
         </form>
 
         <div class="signup-link-area">
-            アカウントをお持ちでない方は <a href="${pageContext.request.contextPath}/TeacherCreate.action">新規登録</a>
+            アカウントをお持ちでない方は <a href="signup.jsp" class="link">新規登録</a>
         </div>
     </div>
 </div>
