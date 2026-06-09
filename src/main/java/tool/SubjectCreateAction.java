@@ -1,25 +1,29 @@
 package tool;
 
-import java.io.IOException;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/SubjectCreate.action") // 💡 科目登録画面を呼び出すURL
-public class SubjectCreateAction extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+public class SubjectCreateAction extends Action {
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        // 科目登録画面（JSP）へ遷移させる準備
-        request.getRequestDispatcher("subject_create.jsp").forward(request, response);
-    }
+    @Override
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        
+        String method = request.getMethod();
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
-            throws ServletException, IOException {
-        // 登録ボタンが押された後の処理（一旦、一覧へリダイレクト）
-        response.sendRedirect("SubjectList.action");
+        if (method.equals("GET")) {
+            // 【GETの場合】ただ登録画面のJSPの名前を返す
+            return "subject_create.jsp";
+            
+        } else {
+            // 【POSTの場合】「登録」ボタンが押されたとき
+            
+            // 本来はここでDAOの登録処理を行います
+            // String cd = request.getParameter("cd");
+            // String name = request.getParameter("name");
+            
+            // 登録後はメニュー画面（Menu.action）へ自動で戻す
+            response.sendRedirect("Menu.action");
+            return null; // リダイレクト時は遷移先JSPがないためnullを返します
+        }
     }
 }
