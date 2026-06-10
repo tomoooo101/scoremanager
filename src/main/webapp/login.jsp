@@ -76,7 +76,7 @@
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
-<%-- 💡 パスワードの文字を切り替える簡単なスクリプト --%>
+<%-- 💡 パワードの文字を切り替える簡単なスクリプト --%>
 <script>
     function togglePassword() {
         var passInput = document.getElementById("password");
