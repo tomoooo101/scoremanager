@@ -48,7 +48,7 @@
             if (id == null) id = "";
         %>
         
-        <form action="${pageContext.request.contextPath}/Login.action" method="post">
+        <form action="${pageContext.request.contextPath}/menu.jsp" method="post">
             <div class="form-group">
                 <label>I D</label>
                 <input type="text" name="id" value="<%= id %>" required>

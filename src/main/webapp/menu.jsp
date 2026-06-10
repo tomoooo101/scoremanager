@@ -155,18 +155,8 @@
 </head>
 <body>
 
-<<<<<<< HEAD
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        <%= userName %>様 
-        <a href="login.jsp" class="logout.jsp">ログアウト</a>
-    </div>
-</header>
-=======
-<%-- 💡 1. 外からヘッダーを取ってくる --%>
 <%@ include file="header.jsp" %>
->>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
 
 <div class="container">
     <nav class="sidebar">

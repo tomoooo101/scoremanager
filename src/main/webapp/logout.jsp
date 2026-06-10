@@ -14,19 +14,6 @@
             color: #333333;
         }
 
-        /* ヘッダー部分 */
-        header {
-            background-color: #eef4ff; /* 薄い青色の背景 */
-            padding: 20px 0 20px 15%;
-            border-bottom: 1px solid #d0d7de;
-        }
-        h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
-        }
-
         /* メインコンテンツの外枠 */
         .container {
             width: 70%;
@@ -69,17 +56,6 @@
             color: #0a58ca;
         }
 
-        /* フッター部分 */
-        footer {
-            background-color: #e2e2e2; /* 濃いめのグレー */
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
     </style>
 </head>
 <body>
@@ -92,13 +68,12 @@
         <div class="title-bar">ログアウト</div>
         
         <div class="alert-success">ログアウトしました</div>
-<<<<<<< HEAD
+
     <nav class="sidebar">    
         <div class="login.jsp">
-=======
         
         <div class="login-link">
->>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
+        
             <a href="login.jsp">ログイン</a>
         </div>
      </nav>   
