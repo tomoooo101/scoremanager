@@ -30,14 +30,14 @@
     <nav class="side-menu">
         <ul>
             <li><a href="menu.jsp">メニュー</a></li>
-            <li><a href="#">学生管理</a></li>
-            <li>成績管理
+            <li><a href="student_list.jsp">学生管理</a></li>
+            <li><a href="grade.jsp"></a></li>成績管理
                 <ul style="padding-left: 15px;">
-                    <li><a href="#">成績登録</a></li>
-                    <li><a href="#">成績参照</a></li>
+                    <li><a href="subject_create.jsp">成績登録</a></li>
+                    <li><a href="grade.jsp">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="#">科目管理</a></li>
+            <li><a href="subject_list.jsp">科目管理</a></li>
         </ul>
     </nav>
 

@@ -33,7 +33,7 @@
 
         <br>
         <button type="submit" style="background-color: #ff4d4d; color: white;">削除する</button>
-        <a href="SubjectList.action">キャンセル</a>
+        <a href="subject_list.jsp">キャンセル</a>
     </form>
 
 </body>

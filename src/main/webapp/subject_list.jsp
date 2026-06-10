@@ -165,14 +165,14 @@
     <nav class="side-menu">
         <ul>
             <li><a href="menu.jsp">メニュー</a></li>
-            <li><a href="StudentCreate.action">学生管理</a></li>
+            <li><a href="student_create.jsp">学生管理</a></li>
             <li>成績管理
                 <ul class="sub-menu">
-                    <li><a href="#">成績登録</a></li>
-                    <li><a href="#">成績参照</a></li>
+                    <li><a href="subject_create.jsp">成績登録</a></li>
+                    <li><a href="grade.jsp">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="SubjectList.action">科目管理</a></li>
+            <li><a href="subject_list.jsp">科目管理</a></li>
         </ul>
     </nav>
 
@@ -180,7 +180,7 @@
         <div class="menu-title-box">科目管理</div>
         
         <div class="top-links">
-            <a href="SubjectCreate.action">新規登録</a>
+            <a href="student_create.jsp">新規登録</a>
         </div>
         
         <table class="subject-table">
@@ -197,29 +197,29 @@
                     <tr>
                         <td>${subject.cd}</td>
                         <td>${subject.name}</td>
-                        <td class="action-cell"><a href="SubjectChange.action?cd=${subject.cd}" class="action-link">変更</a></td>
-                        <td class="action-cell"><a href="SubjectDelete.action?cd=${subject.cd}" class="action-link">削除</a></td>
+                        <td class="action-cell"><a href="subject_change.jsp" class="action-link">変更</a></td>
+                        <td class="action-cell"><a href="subject_delete.jsp" class="action-link">削除</a></td>
                     </tr>
                 </c:forEach>
                 
                 <c:if test="${empty subjects}">
                     <tr>
-                        <td>P01</td>
+                        <td>1</td>
                         <td>python</td>
-                        <td class="action-cell"><a href="SubjectChange.action?cd=P01" class="action-link">変更</a></td>
-                        <td class="action-cell"><a href="SubjectDelete.action?cd=P01" class="action-link">削除</a></td>
+                        <td class="action-cell"><a href="subject_change.jsp" class="action-link">変更</a></td>
+                        <td class="action-cell"><a href="subject_delete.jsp" class="action-link">削除</a></td>
                     </tr>
                     <tr>
-                        <td>J01</td>
+                        <td>2</td>
                         <td>java</td>
-                        <td class="action-cell"><a href="SubjectChange.action?cd=J01" class="action-link">変更</a></td>
-                        <td class="action-cell"><a href="SubjectDelete.action?cd=J01" class="action-link">削除</a></td>
+                        <td class="action-cell"><a href="subject_change.jsp" class="action-link">変更</a></td>
+                        <td class="action-cell"><a href="subject_delete.jsp" class="action-link">削除</a></td>
                     </tr>
                     <tr>
-                        <td>K01</td>
+                        <td>3</td>
                         <td>基本情報</td>
-                        <td class="action-cell"><a href="SubjectChange.action?cd=K01" class="action-link">変更</a></td>
-                        <td class="action-cell"><a href="SubjectDelete.action?cd=K01" class="action-link">削除</a></td>
+                        <td class="action-cell"><a href="subject_change.jsp" class="action-link">変更</a></td>
+                        <td class="action-cell"><a href="subject_delete.jsp" class="action-link">削除</a></td>
                     </tr>
                 </c:if>
             </tbody>

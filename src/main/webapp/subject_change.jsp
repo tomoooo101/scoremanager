@@ -32,7 +32,7 @@
 
         <br>
         <button type="submit">変更</button>
-        <a href="SubjectList.action">戻る</a>
+        <a href="subject_list.jsp">戻る</a>
     </form>
 
 </body>

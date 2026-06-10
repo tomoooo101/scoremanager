@@ -223,12 +223,12 @@
         
         <nav class="sidebar">
             <ul>
-                <li><a href="Menu.action">メニュー</a></li>
-                <li><a href="StudentList.action">学生管理</a></li>
-                <li class="menu-category">成績管理</li>
-                <li><a href="ScoreRegist.action">成績登録</a></li>
-                <li><a href="ScoreList.action">成績参照</a></li>
-                <li><a href="SubjectList.action">科目管理</a></li>
+                <li><a href="menu.jsp">メニュー</a></li>
+                <li><a href="student_list.jsp">学生管理</a></li>
+                <li class="grade.jsp">成績管理</li>
+                <li><a href="subject_create.jsp">成績登録</a></li>
+                <li><a href="grade.jsp">成績参照</a></li>
+                <li><a href="subject_list.jsp">科目管理</a></li>
             </ul>
         </nav>
 
@@ -236,7 +236,7 @@
             <div class="title-bar">学生管理</div>
 
             <div class="register-link">
-                <a href="StudentCreate.action">新規登録</a>
+                <a href="student_create.jsp">新規登録</a>
             </div>
 
             <div class="search-box">
@@ -286,22 +286,22 @@
                     <table class="result-table">
                         <thead>
                             <tr>
-                                <th style="width: 15%;">入学年度 ⑫</th>
-                                <th style="width: 20%;">学生番号 ⑬</th>
-                                <th style="width: 25%;">氏名 ⑭</th>
-                                <th style="width: 15%;">クラス ⑮</th>
-                                <th style="width: 13%;">在学中 ⑯</th>
+                                <th style="width: 15%;">入学年度 </th>
+                                <th style="width: 20%;">学生番号 </th>
+                                <th style="width: 25%;">氏名 </th>
+                                <th style="width: 15%;">クラス </th>
+                                <th style="width: 13%;">在学中 </th>
                                 <th style="width: 12%;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>2021 ⑰</td>
-                                <td>2125001 ⑱</td>
-                                <td>大原 一郎 ⑲</td>
-                                <td>201 ⑳</td>
-                                <td>〇 ㉑</td>
-                                <td><a href="StudentUpdate.action?no=2125001">変更 ㉒</a></td>
+                                <td>2021 </td>
+                                <td>2125001 </td>
+                                <td>大原 一郎 </td>
+                                <td>201</td>
+                                <td>〇 </td>
+                                <td><a href="student_change.jsp">変更 </a></td>
                             </tr>
                             <tr>
                                 <td>2021</td>
@@ -309,7 +309,7 @@
                                 <td>大原 花子</td>
                                 <td>201</td>
                                 <td>〇</td>
-                                <td><a href="StudentUpdate.action?no=2125002">変更</a></td>
+                                <td><a href="student_change.jsp">変更</a></td>
                             </tr>
                             <tr>
                                 <td>2021</td>
@@ -317,7 +317,7 @@
                                 <td>大原 五郎</td>
                                 <td>202</td>
                                 <td>×</td>
-                                <td><a href="StudentUpdate.action?no=2125024">変更</a></td>
+                                <td><a href="student_change.jsp">変更</a></td>
                             </tr>
                             </tbody>
                     </table>

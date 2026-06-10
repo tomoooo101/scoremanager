@@ -66,12 +66,12 @@ body{
         <!-- 左メニュー -->
         <div class="col-md-2 sidebar">
 
-            <a href="#" class="menu-link">メニュー</a>
-            <a href="#" class="menu-link">学生管理</a>
-            <a href="#" class="menu-link">成績管理</a>
-            <a href="#" class="menu-link">成績登録</a>
-            <a href="#" class="menu-link">成績参照</a>
-            <a href="#" class="menu-link">科目管理</a>
+            <a href="menu.jsp">メニュー</a>
+            <a href="student_list.jsp">学生管理</a>
+            <a href="grade.jsp">成績管理</a>
+            <a href="subject_create.jsp">成績登録</a>
+            <a href="grade.jsp">成績参照</a>
+            <a href="subject_create.jsp">科目管理</a>
 
         </div>
 

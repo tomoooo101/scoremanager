@@ -152,12 +152,12 @@
         
         <nav class="sidebar">
             <ul>
-                <li><a href="Menu.action">メニュー</a></li>
-                <li><a href="StudentList.action">学生管理</a></li>
-                <li class="menu-category">成績管理</li>
-                <li><a href="ScoreRegist.action">成績登録</a></li>
-                <li><a href="ScoreList.action">成績参照</a></li>
-                <li><a href="SubjectList.action">科目管理</a></li>
+                <li><a href="menu.jsp">メニュー</a></li>
+                <li><a href="student_list.jsp">学生管理</a></li>
+                <li class="grade.jsp">成績管理</li>
+                <li><a href="subject_create.jsp">成績登録</a></li>
+                <li><a href="grade.jsp">成績参照</a></li>
+                <li><a href="subject_list.jsp">科目管理</a></li>
             </ul>
         </nav>
 
@@ -187,7 +187,7 @@
             </form>
             
             <div class="link-group">
-                <a href="SubjectList.action">戻る</a>
+                <a href="subject_list.jsp">戻る</a>
             </div>
             
         </div>
