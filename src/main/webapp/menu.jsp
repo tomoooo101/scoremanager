@@ -32,31 +32,7 @@
             color: #333;
         }
 
-        /* ① ヘッダーエリア */
-        header { 
-            background-color: #e6f2ff; 
-            padding: 15px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid #ccddee;
-        }
-        header h1 { 
-            margin: 0; 
-            font-size: 24px; 
-            font-weight: normal;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .logout-link {
-            margin-left: 10px;
-            text-decoration: none;
-            color: #0066cc;
-        }
-        .logout-link:hover {
-            text-decoration: underline;
-        }
+
 
         /* メインコンテナ（サイドメニュー + メインコンテンツ） */
         .container { 
@@ -174,26 +150,13 @@
             font-weight: bold;
         }
 
-        /* フッターエリア */
-        footer {
-            background-color: #e6f2ff;
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            color: #666;
-            border-top: 1px solid #ccddee;
-        }
+
     </style>
 </head>
 <body>
 
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        <%= userName %>様 
-        <a href="Login.action" class="logout-link">ログアウト</a>
-    </div>
-</header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
     <nav class="side-menu">
@@ -233,10 +196,8 @@
     </main>
 </div>
 
-<footer>
-    &copy; 2023 TIC<br>
-    大原学園
-</footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>
