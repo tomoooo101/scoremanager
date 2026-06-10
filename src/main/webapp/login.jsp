@@ -31,7 +31,7 @@
 
 <div class="container">
     <div class="login-box">
-        <div class="login-title">ログイン</div>
+        <div class="menu.jsp">ログイン</div>
         
         <%
             List<String> errors = (List<String>) request.getAttribute("errors");
@@ -72,7 +72,6 @@
 
     </div>
 </div>
-<<<<<<< HEAD
 
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
@@ -89,9 +88,6 @@
     }
 </script>
 
-=======
-<%-- 💡 2. 外からフッターを取ってくる --%>
-<%@ include file="footer.jsp" %>
->>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
+
 </body>
 </html>

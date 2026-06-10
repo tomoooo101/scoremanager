@@ -94,7 +94,7 @@
         <div class="alert-success">ログアウトしました</div>
         
         <div class="login-link">
-            <a href="Login.action">ログイン</a>
+            <a href="login.jsp">ログイン</a>
         </div>
         
     </div>

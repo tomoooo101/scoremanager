@@ -33,6 +33,6 @@
     <h1>得点管理システム</h1>
     <div>
         大原 太郎様
-        <a href="Logout.action">ログアウト</a>
+        <a href="logout.jsp">ログアウト</a>
     </div>
 </header>
