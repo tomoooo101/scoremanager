@@ -84,26 +84,28 @@
 </head>
 <body>
 
-    <header>
-        <h1>得点管理システム</h1>
-    </header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
     <div class="container">
         
         <div class="title-bar">ログアウト</div>
         
         <div class="alert-success">ログアウトしました</div>
+<<<<<<< HEAD
     <nav class="sidebar">    
         <div class="login.jsp">
+=======
+        
+        <div class="login-link">
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
             <a href="login.jsp">ログイン</a>
         </div>
      </nav>   
     </div>
 
-    <footer>
-        &copy; 2023 TIC<br>
-        大原学園
-    </footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

@@ -53,9 +53,8 @@ body{
 <div class="container">
 
     <!-- ヘッダー -->
-    <div class="header d-flex justify-content-between align-items-center">
-        <h2 class="mb-0">得点管理システム</h2>
-
+   <%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
         <div>
             大原 太郎　
             <a href="logout.jsp">ログアウト</a>
@@ -141,10 +140,8 @@ body{
     </div>
 
     <!-- フッター -->
-    <div class="footer">
-        © 2023 TIC<br>
-        大原学園
-    </div>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </div>
 

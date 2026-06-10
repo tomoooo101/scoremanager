@@ -17,16 +17,17 @@
         .btn-login { display: block; width: 120px; margin: 20px auto 0 auto; background-color: #0066ff; color: white; padding: 10px 0; border: none; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold; text-align: center; }
         .btn-login:hover { background-color: #0052cc; }
         .error-message { color: #ff0000; font-size: 14px; text-align: center; margin-bottom: 15px; }
-        .signup-link-area { text-align: center; margin-top: 20px; font-size: 13px; }
-        .signup-link-area a { color: #0066ff; text-decoration: none; }
-        .signup-link-area a:hover { text-decoration: underline; }
+        
+        /* 💡 パスワード表示ボタン用の簡単なスタイルを追加 */
+        .toggle-password { text-align: right; font-size: 12px; margin-top: -5px; margin-bottom: 15px; }
+        .toggle-password label { display: inline-flex; align-items: center; cursor: pointer; color: #666; }
+        .toggle-password input { margin-right: 5px; cursor: pointer; }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>得点管理システム</h1>
-</header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
     <div class="login-box">
@@ -52,18 +53,40 @@
                 <label>I D</label>
                 <input type="text" name="id" value="<%= id %>" required>
             </div>
+            
             <div class="form-group">
                 <label>パスワード</label>
-                <input type="password" name="password" required>
+                <%-- 💡 JavaScriptで操作できるように id="password" を追加しました --%>
+                <input type="password" name="password" id="password" required>
             </div>
+            
+            <%-- 💡 パスワード表示切り替えチェックボックスを追加 --%>
+            <div class="toggle-password">
+                <label>
+                    <input type="checkbox" onclick="togglePassword()"> パスワードを表示
+                </label>
+            </div>
+
             <button type="submit" class="btn-login">ログイン</button>
         </form>
 
-        <div class="signup-link-area">
-            アカウントをお持ちでない方は <a href="signup.jsp" class="link">新規登録</a>
-        </div>
     </div>
 </div>
+
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
+
+<%-- 💡 パスワードの文字を切り替える簡単なスクリプト --%>
+<script>
+    function togglePassword() {
+        var passInput = document.getElementById("password");
+        if (passInput.type === "password") {
+            passInput.type = "text"; // チェックを入れたらテキスト（丸見え）にする
+        } else {
+            passInput.type = "password"; // チェックを外したら隠す
+        }
+    }
+</script>
 
 </body>
 </html>

@@ -32,31 +32,7 @@
             color: #333;
         }
 
-        /* ① ヘッダーエリア */
-        header { 
-            background-color: #e6f2ff; 
-            padding: 15px 20px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            border-bottom: 1px solid #ccddee;
-        }
-        header h1 { 
-            margin: 0; 
-            font-size: 24px; 
-            font-weight: normal;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .logout-link {
-            margin-left: 10px;
-            text-decoration: none;
-            color: #0066cc;
-        }
-        .logout-link:hover {
-            text-decoration: underline;
-        }
+
 
         /* メインコンテナ（サイドメニュー + メインコンテンツ） */
         .container { 
@@ -174,19 +150,12 @@
             font-weight: bold;
         }
 
-        /* フッターエリア */
-        footer {
-            background-color: #e6f2ff;
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            color: #666;
-            border-top: 1px solid #ccddee;
-        }
+
     </style>
 </head>
 <body>
 
+<<<<<<< HEAD
 <header>
     <h1>得点管理システム</h1>
     <div class="user-info">
@@ -194,6 +163,10 @@
         <a href="login.jsp" class="logout.jsp">ログアウト</a>
     </div>
 </header>
+=======
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
 
 <div class="container">
     <nav class="sidebar">
@@ -230,10 +203,8 @@
     </main>
 </div>
 
-<footer>
-    &copy; 2023 TIC<br>
-    大原学園
-</footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

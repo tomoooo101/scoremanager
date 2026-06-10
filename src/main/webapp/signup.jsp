@@ -18,6 +18,9 @@
 </head>
 <body>
 
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
+
 <div class="box">
     <h2>アカウント新規登録</h2>
     <form action="SignUp.action" method="post">
@@ -37,6 +40,9 @@
     </form>
     <a href="login.jsp" class="link">ログイン画面に戻る</a>
 </div>
+
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

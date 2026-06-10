@@ -198,26 +198,13 @@
             color: #333;
         }
 
-        /* フッター */
-        footer {
-            background-color: #e2e2e2;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            width: 100%;
-            margin-top: auto;
-        }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>得点管理システム</h1>
-        <div class="user-info">
-            大原 太郎様 <a href="Logout.action">ログアウト</a>
-        </div>
-    </header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
@@ -281,10 +268,8 @@
             </div>
 
             
-    <footer>
-        &copy; 2023 TIC<br>
-        大原学園
-    </footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

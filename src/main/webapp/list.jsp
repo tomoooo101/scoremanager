@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -14,13 +14,7 @@ body {
     background-color: #fff;
 }
 
-header {
-    background-color: #e6f2ff;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+/* ⚠️ ここにあった古い header の CSS は消しました */
 
 .container {
     display: flex;
@@ -94,14 +88,8 @@ select {
 
 <body>
 
-<header>
-    <h1>得点管理システム</h1>
-
-    <div>
-        大原 太郎様
-        <a href="Logout.action">ログアウト</a>
-    </div>
-</header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
 
@@ -182,6 +170,9 @@ select {
     </main>
 
 </div>
+
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>
