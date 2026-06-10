@@ -23,10 +23,8 @@
 </head>
 <body>
 
-<header>
-    <h1>得点管理システム</h1>
-    <div>${user.name}様 <a href="Login.action" style="text-decoration: none; color: #0066cc;">ログアウト</a></div>
-</header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
     <nav class="side-menu">
@@ -77,6 +75,7 @@
         <a href="menu.jsp" style="text-decoration: none; color: #0066cc;">戻る</a>
     </main>
 </div>
-
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -181,12 +181,8 @@
 </head>
 <body>
 
-    <header>
-        <h1>得点管理システム</h1>
-        <div class="user-info">
-            大原 太郎様 <a href="Logout.action">ログアウト</a>
-        </div>
-    </header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         

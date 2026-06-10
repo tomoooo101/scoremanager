@@ -84,9 +84,8 @@
 </head>
 <body>
 
-    <header>
-        <h1>得点管理システム</h1>
-    </header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
     <div class="container">
         
@@ -100,10 +99,8 @@
         
     </div>
 
-    <footer>
-        &copy; 2023 TIC<br>
-        大原学園
-    </footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

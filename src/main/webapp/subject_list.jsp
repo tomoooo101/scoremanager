@@ -158,13 +158,8 @@
 </head>
 <body>
 
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        <%= userName %>様 
-        <a href="Login.action" class="logout-link">ログアウト</a>
-    </div>
-</header>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
     <nav class="side-menu">
@@ -231,6 +226,7 @@
         </table>
     </main>
 </div>
-
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 </body>
 </html>

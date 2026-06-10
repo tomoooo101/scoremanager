@@ -72,6 +72,7 @@
 
     </div>
 </div>
+<<<<<<< HEAD
 
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
@@ -88,5 +89,9 @@
     }
 </script>
 
+=======
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
 </body>
 </html>
