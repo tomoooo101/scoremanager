@@ -243,10 +243,8 @@
         
     </div>
 
-    <footer>
-        &copy; 2023 TIC<br>
-        大原学園
-    </footer>
+<%-- 💡 2. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

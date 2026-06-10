@@ -16,30 +16,6 @@
             color: #333333;
         }
 
-        /* ヘッダー */
-        header {
-            background-color: #eef4ff;
-            padding: 20px 15%;
-            border-bottom: 1px solid #d0d7de;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .user-info a {
-            color: #0d6efd;
-            text-decoration: underline;
-            margin-left: 10px;
-        }
-
         /* 左右2カラムのレイアウト */
         .main-wrapper {
             width: 75%;
@@ -209,12 +185,12 @@
         
         <nav class="sidebar">
             <ul>
-                <li><a href="menu.jsp">メニュー</a></li>                                           nu.action">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li class="grade.jap">成績管理</li>
-                <li><a href="subject_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
+                <li><a href="Me                                             nu.action">メニュー</a></li>
+                <li><a href="StudentList.action">学生管理</a></li>
+                <li class="menu-category">成績管理</li>
+                <li><a href="ScoreRegist.action">成績登録</a></li>
+                <li><a href="ScoreList.action">成績参照</a></li>
+                <li><a href="SubjectList.action">科目管理</a></li>
             </ul>
         </nav>
 
