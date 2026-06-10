@@ -191,22 +191,22 @@
     <h1>得点管理システム</h1>
     <div class="user-info">
         <%= userName %>様 
-        <a href="Login.action" class="logout-link">ログアウト</a>
+        <a href="login.jsp" class="logout.jsp">ログアウト</a>
     </div>
 </header>
 
 <div class="container">
-    <nav class="side-menu">
+    <nav class="sidebar">
         <ul>
             <li><a href="menu.jsp">メニュー</a></li>
-            <li><a href="StudentCreate.action">学生管理</a></li>
-            <li>成績管理
+            <li><a href="student_list.jsp">学生管理</a></li>
+            <li><a href="grade.jsp"></a></li>成績管理
                 <ul class="sub-menu">
-                    <li><a href="#">成績登録</a></li>
-                    <li><a href="#">成績参照</a></li>
+                    <li><a href="subject_create.jsp">成績登録</a></li>
+                    <li><a href="grade.jsp">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="SubjectList.action">科目管理</a></li>
+            <li><a href="subject_list.jsp">科目管理</a></li>
         </ul>
     </nav>
 
@@ -214,19 +214,16 @@
         <div class="menu-title-box">メニュー</div>
         
         <div class="panel-container">
-            <a href="StudentList.action" class="menu-panel panel-student">
+            <a href="student_list.jsp" class="menu-panel panel-student">
                 学生管理
             </a>
 
-            <a href="#" class="menu-panel panel-score">
-                <div class="main-label">成績管理</div>
-                <div class="sub-label">
-                    成績登録<br>
-                    成績参照
-                </div>
-            </a>
+            <a href="grade.jsp" class="menu-panel panel-score">成績管理
+                成績登録
+                <br>成績参照
+                </div></a>
 
-            <a href="SubjectList.action" class="menu-panel panel-subject">
+            <a href="subject_list.jsp" class="menu-panel panel-subject">
                 科目管理
             </a>
         </div>

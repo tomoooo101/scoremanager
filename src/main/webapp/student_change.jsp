@@ -58,7 +58,7 @@ body{
 
         <div>
             大原 太郎　
-            <a href="#">ログアウト</a>
+            <a href="logout.jsp">ログアウト</a>
         </div>
     </div>
 

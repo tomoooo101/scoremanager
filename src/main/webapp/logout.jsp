@@ -93,11 +93,11 @@
         <div class="title-bar">ログアウト</div>
         
         <div class="alert-success">ログアウトしました</div>
-        
-        <div class="login-link">
-            <a href="Login.action">ログイン</a>
+    <nav class="sidebar">    
+        <div class="login.jsp">
+            <a href="login.jsp">ログイン</a>
         </div>
-        
+     </nav>   
     </div>
 
     <footer>
