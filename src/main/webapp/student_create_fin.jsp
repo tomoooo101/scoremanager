@@ -153,7 +153,7 @@
             <div class="alert-success">登録が完了しました</div>
             
             <div class="link-group">
-                <a href="sutdent_create.jap">戻る</a>
+                <a href="sutdent_create.jsp">戻る</a>
                 <a href="student_list.jsp">学生一覧</a>
             </div>
             
