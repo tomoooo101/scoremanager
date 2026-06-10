@@ -26,8 +26,8 @@ public class LoginAction extends HttpServlet {
         
         request.setCharacterEncoding("UTF-8");
         
-        // ① JSPの入力欄（name="userId" と name="password"）から値を受け取る
-        String id = request.getParameter("userId");
+        // 💡 JSPの name="id" に合わせて "id" で受け取る
+        String id = request.getParameter("id"); 
         String password = request.getParameter("password");
         
         // ② 厨房（DAO）を呼び出して、データベースを調べてもらう
@@ -39,9 +39,15 @@ public class LoginAction extends HttpServlet {
             // ログイン成功！メニュー画面にリダイレクト
             response.sendRedirect("menu.jsp");
         } else {
-            // ログイン失敗…！もう一度ログイン画面に戻す（エラーメッセージ付き）
-            request.setAttribute("error", "ユーザーIDまたはパスワードが違います");
+            // 💡 JSPに合わせて「errors」というリストを作って渡す
+            java.util.List<String> errors = new java.util.ArrayList<>();
+            errors.add("ユーザーIDまたはパスワードが違います");
+            request.setAttribute("errors", errors);
+            
+            // 入力したIDを画面に残すための処理
+            request.setAttribute("id", id);
+            
             request.getRequestDispatcher("login.jsp").forward(request, response);
         }
     }
-}
+} // 💡 貼り付けるときは、この最後の閉じカッコまでしっかり入れてね！

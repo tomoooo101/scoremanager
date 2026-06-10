@@ -31,7 +31,7 @@
 
 <div class="container">
     <div class="login-box">
-        <div class="menu.jsp">ログイン</div>
+        <div class="login-title">ログイン</div>
         
         <%
             List<String> errors = (List<String>) request.getAttribute("errors");
@@ -87,7 +87,6 @@
         }
     }
 </script>
-
 
 </body>
 </html>
