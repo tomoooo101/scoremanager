@@ -185,7 +185,7 @@
         
         <nav class="sidebar">
             <ul>
-                <li><a href="menu.jsp">メニュー</a></li>                                             nu.action">メニュー</a></li>
+                <li><a href="menu.jsp">メニュー</a></li>
                 <li><a href="student_list.jsp">学生管理</a></li>
                 <li class="grade.jasp">成績管理</li>
                 <li><a href="student_create.jsp">成績登録</a></li>
