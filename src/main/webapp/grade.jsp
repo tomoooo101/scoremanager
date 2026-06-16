@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,14 +13,20 @@
             padding: 0;
             background-color: #ffffff;
             color: #333333;
+            /* 💡 フッター最下部固定のための設定 */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         /* 左右2カラムのレイアウト */
         .main-wrapper {
             width: 75%;
-            margin: 30px auto 100px auto;
+            margin: 30px auto 0 auto; /* 下の余白をFlexboxに任せるため0にします */
             display: flex;
             gap: 4%;
+            /* 💡 中身が少なくても、フッターを一番下まで押し出す設定 */
+            flex: 1;
         }
 
         /* 左側メニュー */
@@ -85,7 +90,7 @@
             margin-bottom: 0;
         }
 
-        /* 左側の「科目情報」「学生情報」のラベルラベル */
+        /* 左側の「科目情報」「学生情報」のラベル */
         .row-label {
             width: 100px;
             font-size: 14px;
@@ -146,14 +151,14 @@
             background-color: #444444;
         }
 
-        /* 現在選択されている科目名の表示（①の部分） */
+        /* 現在選択されている科目名の表示 */
         .current-subject {
             font-size: 14px;
             font-weight: bold;
             margin-bottom: 10px;
         }
 
-        /* 成績テーブルスタイル（②の部分） */
+        /* 成績テーブルスタイル */
         .result-table {
             width: 100%;
             border-collapse: collapse;
@@ -172,13 +177,11 @@
             padding: 12px 8px;
             color: #333;
         }
-
-
     </style>
 </head>
 <body>
 
-<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%-- 💡 外からヘッダーを取ってくる --%>
 <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
@@ -241,9 +244,11 @@
                     </div>
                 </form>
             </div>
-
             
-<%-- 💡 2. 外からフッターを取ってくる --%>
+        </div> <%-- 💡 追加：contentの枠を閉じる --%>
+    </div> <%-- 💡 追加：main-wrapperの枠を閉じる --%>
+
+<%-- 💡 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
 </body>
