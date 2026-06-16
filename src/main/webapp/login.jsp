@@ -56,11 +56,9 @@
             
             <div class="form-group">
                 <label>パスワード</label>
-                <%-- 💡 JavaScriptで操作できるように id="password" を追加しました --%>
                 <input type="password" name="password" id="password" required>
             </div>
             
-            <%-- 💡 パスワード表示切り替えチェックボックスを追加 --%>
             <div class="toggle-password">
                 <label>
                     <input type="checkbox" onclick="togglePassword()"> パスワードを表示
@@ -76,7 +74,7 @@
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
-<%-- 💡 パワードの文字を切り替える簡単なスクリプト --%>
+<%-- 💡 パスワードの文字を切り替える簡単なスクリプト --%>
 <script>
     function togglePassword() {
         var passInput = document.getElementById("password");

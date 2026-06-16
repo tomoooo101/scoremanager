@@ -55,7 +55,6 @@
         .login-link a:hover {
             color: #0a58ca;
         }
-
     </style>
 </head>
 <body>
@@ -63,21 +62,18 @@
 <%-- 💡 1. 外からヘッダーを取ってくる --%>
 <%@ include file="header.jsp" %>
 
-    <div class="container">
-        
-        <div class="title-bar">ログアウト</div>
-        
-        <div class="alert-success">ログアウトしました</div>
+<div class="container">
+    <!-- ① 見出し -->
+    <div class="title-bar">ログアウト</div>
+    
+    <!-- ② 緑色のメッセージバー -->
+    <div class="alert-success">ログアウトしました</div>
 
-    <nav class="sidebar">    
-        <div class="login.jsp">
-        
-        <div class="login-link">
-        
-            <a href="login.jsp">ログイン</a>
-        </div>
-     </nav>   
+    <!-- ③ ログイン画面へのリンク（タグの乱れを綺麗に整理しました） -->
+    <div class="login-link">
+        <a href="login.jsp">ログイン</a>
     </div>
+</div>
 
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>

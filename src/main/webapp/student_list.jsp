@@ -1,338 +1,316 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%-- JSTLタグライブラリの宣言（一覧のループや条件分岐に使用します） --%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>得点管理システム</title>
     <style>
-        /* 全体のスタイル設定 */
-        body {
-            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #ffffff;
-            color: #333333;
+        /* 全体のリセットと大原仕様の基本フォント設定 */
+        body { 
+            font-family: sans-serif; 
+            margin: 0; 
+            background-color: #fff; 
+            color: #333;
         }
 
-        /* ヘッダー */
-        header {
-            background-color: #eef4ff;
-            padding: 20px 15%;
-            border-bottom: 1px solid #d0d7de;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* 💻 ヘッダーエリア（image_589537.png に合わせた黒・ダークグレーの帯） */
+        header { 
+            background-color: #222; 
+            padding: 15px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
         }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
+        header h1 { 
+            margin: 0; 
+            font-size: 24px; 
+            font-weight: normal;
+            color: #fff; /* 文字を白に */
         }
         .user-info {
             font-size: 14px;
+            color: #fff; /* ユーザー名と「様」も白文字に */
         }
-        .user-info a {
-            color: #0d6efd;
+        .logout-link {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #4da6ff; /* 黒背景で見えやすい爽やかな青 */
+        }
+        .logout-link:hover {
             text-decoration: underline;
-            margin-left: 10px;
         }
 
-        /* 左右2カラムのレイアウト */
-        .main-wrapper {
-            width: 75%;
-            margin: 30px auto 100px auto;
-            display: flex;
-            gap: 4%;
+        /* メインコンテナ（レイアウト用） */
+        .container { 
+            display: flex; 
+            min-height: calc(100vh - 70px); 
         }
 
-        /* 左側メニュー */
-        .sidebar {
-            width: 18%;
-            font-size: 14px;
+        /* 📂 左側サイドメニュー */
+        .side-menu { 
+            width: 200px; 
+            padding: 30px 20px; 
+            background-color: #fff;
         }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
+        .side-menu ul { 
+            list-style: none; 
+            padding: 0; 
             margin: 0;
         }
-        .sidebar li {
-            margin-bottom: 12px;
+        .side-menu li { 
+            margin-bottom: 20px; 
+            font-size: 16px;
+            color: #333;
         }
-        .sidebar .menu-category {
-            font-weight: bold;
-            color: #555;
-            margin-top: 15px;
-            margin-bottom: 5px;
+        .side-menu a { 
+            text-decoration: none; 
+            color: #0066cc; 
         }
-        .sidebar a {
-            color: #0d6efd;
-            text-decoration: underline;
-            padding-left: 10px;
-            display: inline-block;
+        .side-menu a:hover { 
+            text-decoration: underline; 
         }
-
-        /* 右側コンテンツエリア */
-        .content {
-            width: 78%;
+        .sub-menu {
+            padding-left: 0;
+            margin-top: 10px;
         }
-
-        /* ① 学生管理の見出し */
-        .title-bar {
-            background-color: #f0f0f0;
-            padding: 12px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 4px;
+        .sub-menu li {
             margin-bottom: 10px;
+            padding-left: 15px;
         }
 
-        /* ⑧ 新規登録リンク */
-        .register-link {
+        /* 📝 中央メインコンテンツエリア */
+        .main-content { 
+            flex-grow: 1; 
+            padding: 30px; 
+            background-color: #fff; 
+        }
+        
+        /* 「学生管理」のライトグレーの背景見出し枠 */
+        .menu-title-box {
+            background-color: #f5f5f5;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* 右上の「新規登録」リンク */
+        .top-links {
             text-align: right;
             margin-bottom: 15px;
         }
-        .register-link a {
-            color: #0d6efd;
+        .top-links a {
+            font-size: 16px;
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .top-links a:hover {
             text-decoration: underline;
-            font-size: 14px;
         }
 
-        /* 検索フォームエリア */
-        .search-box {
-            background-color: #ffffff;
+        /* 🔍 検索・絞込み条件エリア（薄いグレーの大きな角丸枠） */
+        .filter-box {
             border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-        }
-        .search-form {
-            display: flex;
-            align-items: flex-end;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-        .search-group {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-        }
-        .search-group label {
-            font-size: 13px;
-            color: #666;
-            font-weight: bold;
-        }
-        .search-select {
-            width: 160px;
-            padding: 6px 10px;
-            font-size: 14px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
+            border-radius: 12px;
+            padding: 25px 30px;
+            margin-bottom: 30px;
             background-color: #fff;
-        }
-        
-        /* ⑥⑦ 在学中チェックボックス */
-        .search-check {
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-size: 13px;
-            color: #666;
-            padding-bottom: 8px;
+            gap: 40px;
         }
-        .search-check input {
-            width: 16px;
-            height: 16px;
-            margin: 0;
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
-
-        /* ⑨ 絞込みボタン */
-        .btn-search {
-            background-color: #555555; /* 画像に合わせた濃いめのグレー/黒 */
+        .filter-group label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+        }
+        .filter-group select {
+            padding: 6px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-width: 130px;
+            background-color: #fff;
+        }
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 22px; /* セレクトボックスのラベル分、位置を下げて中央揃えに */
+            font-size: 14px;
+        }
+        
+        /* 絞込みボタン（画像と同じダークグレーの丸角デザイン） */
+        .btn-filter {
+            background-color: #444;
             color: white;
             border: none;
-            padding: 7px 18px;
+            padding: 10px 24px;
             font-size: 14px;
-            border-radius: 4px;
-            cursor: pointer;
             font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 22px;
+            transition: background 0.2s;
         }
-        .btn-search:hover {
-            background-color: #444444;
+        .btn-filter:hover {
+            background-color: #333;
         }
 
-        /* ⑩ 検索結果件数 */
+        /* 📊 検索結果・件数表示 */
         .result-count {
             font-size: 14px;
+            margin-bottom: 15px;
             color: #333;
-            margin-bottom: 10px;
-            font-weight: 500;
         }
 
-        /* ⑪ 一覧テーブルスタイル */
-        .result-table {
+        /* 学生一覧テーブル（シンプルで洗練された細線） */
+        .student-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 14px;
-            margin-top: 10px;
+            margin-bottom: 15px;
         }
-        .result-table th {
-            border-bottom: 2px solid #333;
-            padding: 10px 8px;
+        .student-table th, .student-table td {
+            padding: 12px 10px;
             text-align: left;
-            font-weight: bold;
-        }
-        .result-table td {
+            font-size: 14px;
             border-bottom: 1px solid #e0e0e0;
-            padding: 12px 8px;
-            color: #333;
         }
-        /* 変更リンク */
-        .result-table a {
-            color: #0d6efd;
+        .student-table th {
+            font-weight: bold;
+            color: #333;
+            border-bottom: 2px solid #333; /* ヘッダーの下だけ少し太い線 */
+        }
+        .action-link {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .action-link:hover {
             text-decoration: underline;
         }
-
-        /* ㉓ エラー・データなしメッセージ */
+        
+        /* エラー・警告メッセージ表示（学生情報が存在しませんでした） */
         .error-message {
             color: #333;
             font-size: 14px;
             margin-top: 15px;
         }
-
-        /* フッター */
-        footer {
-            background-color: #e2e2e2;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            width: 100%;
-            margin-top: auto;
-        }
     </style>
 </head>
 <body>
 
-	<%-- 💡 1. 外からヘッダーを取ってくる --%>
-	<%@ include file="header.jsp" %>
-
-    <div class="main-wrapper">
-        
-        <nav class="sidebar">
-            <ul>
-                <li><a href="menu.jsp">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li class="grade.jsp">成績管理</li>
-                <li><a href="subject_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
-            </ul>
-        </nav>
-
-        <div class="content">
-            <div class="title-bar">学生管理</div>
-
-            <div class="register-link">
-                <a href="student_create.jsp">新規登録</a>
-            </div>
-
-            <div class="search-box">
-                <form action="StudentList.action" method="get" class="search-form">
-                    <div class="search-group">
-                        <label>入学年度</label>
-                        <select name="f1" class="search-select">
-                            <option value="">--------</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                        </select>
-                    </div>
-
-                    <div class="search-group">
-                        <label>クラス</label>
-                        <select name="f2" class="search-select">
-                            <option value="">--------</option>
-                            <option value="201">211</option>
-                            <option value="202">213</option>
-                        </select>
-                    </div>
-
-                    <div class="search-check">
-                        <input type="checkbox" id="f3" name="f3" value="true" checked>
-                        <label for="f3">在学中</label>
-                    </div>
-
-                    <button type="submit" class="btn-search">絞込み</button>
-                </form>
-            </div>
-
-            <%-- 
-               Javaのサーブレット側から渡されるリスト（例: students）の状態によって
-               「一覧表示（⑪）」と「データなしメッセージ（㉓）」を切り替えます。
-               ※現在は動作確認用に、必ずデータがある体（true）にしています。
-               ※本番時は <c:choose> を有効にしてください。
-            --%>
-            <c:choose>
-                <%-- パターンA：学生情報が存在するとき --%>
-                <c:when test="${true}"> <%-- 本番は test="${not empty students}" のようにします --%>
-                    
-                    <div class="result-count">検索結果：39件</div>
-
-                    <table class="result-table">
-                        <thead>
-                            <tr>
-                                <th style="width: 15%;">入学年度 </th>
-                                <th style="width: 20%;">学生番号 </th>
-                                <th style="width: 25%;">氏名 </th>
-                                <th style="width: 15%;">クラス </th>
-                                <th style="width: 13%;">在学中 </th>
-                                <th style="width: 12%;"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>2021 </td>
-                                <td>2125001 </td>
-                                <td>大原 一郎 </td>
-                                <td>201</td>
-                                <td>〇 </td>
-                                <td><a href="student_change.jsp">変更 </a></td>
-                            </tr>
-                            <tr>
-                                <td>2021</td>
-                                <td>2125002</td>
-                                <td>大原 花子</td>
-                                <td>201</td>
-                                <td>〇</td>
-                                <td><a href="student_change.jsp">変更</a></td>
-                            </tr>
-                            <tr>
-                                <td>2021</td>
-                                <td>2125024</td>
-                                <td>大原 五郎</td>
-                                <td>202</td>
-                                <td>×</td>
-                                <td><a href="student_change.jsp">変更</a></td>
-                            </tr>
-                            </tbody>
-                    </table>
-                </c:when>
-
-                <%-- パターンB：絞り込み条件に該当する学生情報がない時 --%>
-                <c:otherwise>
-                    <div class="error-message">学生情報が存在しませんでした</div>
-                </c:otherwise>
-            </c:choose>
-
-        </div>
+<!-- 💻 ヘッダー情報（ご指定のEL式に修正完了） -->
+<header>
+    <h1>得点管理システム</h1>
+    <div class="user-info">
+        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
     </div>
+</header>
 
-<%-- 💡 2. 外からフッターを取ってくる --%>
-<%@ include file="footer.jsp" %>
+<div class="container">
+    <!-- 📂 左側サイドメニュー -->
+    <nav class="side-menu">
+        <ul>
+            <li><a href="menu.jsp">メニュー</a></li>
+            <li><a href="student_list.jsp">学生管理</a></li>
+            <li><a href="grade.jsp">成績管理</a></li>
+                <ul class="sub-menu">
+                    <li><a href="subject_create.jsp">成績登録</a></li>
+                    <li><a href="grade.jsp">成績参照</a></li>
+                </ul>
+            </li>
+            <li><a href="SubjectList.action">科目管理</a></li>
+        </ul>
+    </nav>
+
+    <!-- 📝 中央メインコンテンツ -->
+    <main class="main-content">
+        <div class="menu-title-box">学生管理</div>
+        
+        <!-- 右上の新規登録リンク -->
+        <div class="top-links">
+            <a href="StudentCreate.action">新規登録</a>
+        </div>
+        
+        <!-- 🔍 絞込み検索フォーム -->
+        <form action="StudentList.action" method="get" class="filter-box">
+            <div class="filter-group">
+                <label>入学年度</label>
+                <select name="f1">
+                    <option value="">--------</option>
+                    <c:forEach var="year" items="${years}">
+                        <option value="${year}" ${year == param.f1 ? 'selected' : ''}>${year}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>クラス</label>
+                <select name="f2">
+                    <option value="">--------</option>
+                    <c:forEach var="c_name" items="${classes}">
+                        <option value="${c_name}" ${c_name == param.f2 ? 'selected' : ''}>${c_name}</option>
+                    </c:forEach>
+                </select>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" name="f3" id="attend" value="true" ${param.f3 == 'true' || empty param.f3 ? 'checked' : ''}>
+                <label factory="attend">在学中</label>
+            </div>
+            
+            <button type="submit" class="btn-filter">絞込み</button>
+        </form>
+        
+        <!-- 📊 検索結果件数 -->
+        <div class="result-count">
+            検索結果：${students.size()}件
+        </div>
+        
+        <!-- 学生一覧テーブル（ID、名前、クラスに絞ってシンプルに表示） -->
+        <table class="student-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">入学年度</th>
+                    <th style="width: 20%;">学生番号</th>
+                    <th style="width: 30%;">氏名</th>
+                    <th style="width: 15%;">クラス</th>
+                    <th style="width: 10%;">在学中</th>
+                    <th style="width: 10%;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="student" items="${students}">
+                    <tr>
+                        <td>${student.entYear}</td>
+                        <td>${student.no}</td>
+                        <td>${student.name}</td>
+                        <td>${student.classNum}</td>
+                        <td>
+                            <c:choose>
+                                <c:when class="${student.isAttend}">〇</c:when>
+                                <c:otherwise>×</c:otherwise>
+                            </c:choose>
+                        </td>
+                        <td><a href="StudentChange.action?no=${student.no}" class="action-link">変更</a></td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+        
+        <!-- 💡 学生データが1件もない場合のみ表示する大原のメッセージ仕様 -->
+        <c:if test="${empty students}">
+            <div class="error-message">学生情報が存在しませんでした</div>
+        </c:if>
+    </main>
+</div>
 
 </body>
 </html>
