@@ -4,19 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import bean.Teacher; // 💡 変更しないクラス名「Teacher」をそのままインポート
+import bean.Teacher;
 
 public class TeacherDao {
-    private final String URL = "jdbc:postgresql://localhost:5432/kadai";
-    private final String USER = "postgres";
-    private final String PASSWORD = "password"; // ★ご自身のPostgreSQLのパスワードに修正してください
+    // 💡 画像から判明したH2データベースの正しい接続情報に修正！
+    private final String URL = "jdbc:h2:~/bank"; 
+    private final String USER = "sa";            // H2の標準ユーザー
+    private final String PASSWORD = "";          // H2の標準パスワード（空っぽ）
 
     public Teacher login(String id, String password) {
         Teacher teacher = null;
-        String sql = "SELECT * FROM 教員 WHERE 教員ID = ? AND パスワード = ?";
+        
+        // 💡 テーブル名を日本語の「教員」から、画像に写っている「TEACHER」に変更！
+        // 💡 カラム名もH2に合わせて英語（ID, PASSWORD）に直しています
+        String sql = "SELECT * FROM TEACHER WHERE ID = ? AND PASSWORD = ?";
 
         try {
-            Class.forName("org.postgresql.Driver");
+            // 💡 ドライバーも PostgreSQL から「H2用」に修正！
+            Class.forName("org.h2.Driver");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
             return null;
@@ -31,11 +36,15 @@ public class TeacherDao {
 
             try (ResultSet rs = pStmt.executeQuery()) {
                 if (rs.next()) {
-                    teacher = new Teacher(); // 💡 クラス名「Teacher」で生成
-                    teacher.setId(rs.getString("教員ID"));
-                    teacher.setPassword(rs.getString("パスワード"));
-                    teacher.setName(rs.getString("氏名"));
-                    teacher.setSchoolCode(rs.getString("学校コード"));
+                    teacher = new Teacher();
+                    // 💡 H2からデータを取り出す名前も、英語のカラム名に合わせます
+                    teacher.setId(rs.getString("ID"));
+                    teacher.setPassword(rs.getString("PASSWORD"));
+                    teacher.setName(rs.getString("NAME"));
+                    
+                    // 💡 学校コードの列名は「SCHOOL_CD」か「SCHOOL_CODE」のことが多いです。
+                    // もしエラーが出たら、学校の設計書の英語名に合わせてみてください
+                    teacher.setSchoolCode(rs.getString("SCHOOL_CD")); 
                 }
             }
         } catch (Exception e) {
