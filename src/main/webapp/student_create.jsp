@@ -68,9 +68,8 @@
                         <option value="102">102</option>
                     </select>
                 </div>
-                <button type="submit" class="btn">登録して終了</button>
                 <div class=back-link">
-                   <a href="student_create_fin.jsp">登録して終了</a>                
+                   <a href="student_create_fin.jsp" class="btn-black">登録して終了</a>                
                 </div>
             </form>
         </div>

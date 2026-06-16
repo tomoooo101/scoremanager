@@ -112,9 +112,8 @@ body{
                     <label class="col-sm-2 col-form-label">クラス</label>
                     <div class="col-sm-8">
                         <select name="classNum" class="form-select">
-                            <option value="201">201</option>
-                            <option value="202">202</option>
-                            <option value="203">203</option>
+                            <option value="211">211</option>
+                            <option value="213">213</option>
                         </select>
                     </div>
                 </div>

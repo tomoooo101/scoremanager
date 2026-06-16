@@ -222,9 +222,8 @@
                 <div class="form-group">
                     <label for="classNum">クラス</label>
                     <select id="classNum" name="classNum" class="form-select">
-                        <option value="201" selected>201</option>
-                        <option value="202">202</option>
-                        <option value="203">203</option>
+                        <option value="201" selected>211</option>
+                        <option value="202">213</option>
                     </select>
                 </div>
 

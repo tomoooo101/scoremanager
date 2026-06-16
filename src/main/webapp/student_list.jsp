@@ -256,9 +256,8 @@
                         <label>クラス</label>
                         <select name="f2" class="search-select">
                             <option value="">--------</option>
-                            <option value="201">201</option>
-                            <option value="202">202</option>
-                            <option value="203">203</option>
+                            <option value="201">211</option>
+                            <option value="202">213</option>
                         </select>
                     </div>
 
