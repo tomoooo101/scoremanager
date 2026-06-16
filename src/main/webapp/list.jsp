@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<header>
+    <h1>得点管理システム</h1>
+    <div class="user-info">
+        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
+    </div>
+</header>
 <meta charset="UTF-8">
 <title>得点管理システム - 成績管理</title>
 

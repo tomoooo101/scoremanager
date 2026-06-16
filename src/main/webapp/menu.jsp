@@ -20,6 +20,13 @@
 %>
 <!DOCTYPE html>
 <html>
+<header>
+    <h1>得点管理システム</h1>
+    <div class="user-info">
+        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
+    </div>
+</header>
+
 <head>
     <meta charset="UTF-8">
     <title>得点管理システム - メニュー</title>
