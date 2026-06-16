@@ -2,63 +2,56 @@
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
+    <meta charset="UTF-8">
+    <title>科目情報変更</title>
 
-<meta charset="UTF-8">
-<title>科目情報変更</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background:#f5f5f5;
+        }
 
-<style>
-body{
-    background:#f5f5f5;
-}
+        .header{
+            background:#e9edf4;
+            padding:15px;
+        }
 
-.header{
-    background:#e9edf4;
-    padding:15px;
-}
+        .sidebar{
+            width:180px;
+            float:left;
+            padding-top:20px;
+        }
 
-.sidebar{
-    width:180px;
-    float:left;
-    padding-top:20px;
-}
+        .content{
+            margin-left:200px;
+            min-height:400px;
+            border-left:1px solid #ddd;
+            padding-left:20px;
+        }
 
-.content{
-    margin-left:200px;
-    min-height:400px;
-    border-left:1px solid #ddd;
-    padding-left:20px;
-}
+        .footer{
+            background:#e9e9e9;
+            text-align:center;
+            margin-top:50px;
+            padding:10px;
+            clear:both;
+        }
 
-.footer{
-    background:#e9e9e9;
-    text-align:center;
-    margin-top:50px;
-    padding:10px;
-    clear:both;
-}
-
-.title-bar{
-    background:#eeeeee;
-    padding:5px 10px;
-    margin-bottom:20px;
-}
-</style>
-
+        .title-bar{
+            background:#eeeeee;
+            padding:5px 10px;
+            margin-bottom:20px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
 
     <!-- ヘッダー -->
-<%@ include file="header.jsp" %>
+    <%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
+    <%@ include file="header.jsp" %>
 
     <!-- サイドメニュー -->
     <div class="sidebar">
@@ -118,6 +111,8 @@ body{
 
 </div>
 
+<!-- フッター -->
 <%@ include file="footer.jsp" %>
+
 </body>
 </html>

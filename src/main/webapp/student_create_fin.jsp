@@ -2,13 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
     <meta charset="UTF-8">
     <title>得点管理システム</title>
     <style>
@@ -137,8 +130,8 @@
 </head>
 <body>
 
-    <%-- 💡 1. 外からヘッダーを取ってくる --%>
-<%@ include file="header.jsp" %>
+    <%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
+    <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
@@ -146,7 +139,7 @@
             <ul>
                 <li><a href="menu.jsp">メニュー</a></li>
                 <li><a href="student_list.jsp">学生管理</a></li>
-                <li class="grade.jsp">成績管理</li>
+                <li>成績管理</li>
                 <li><a href="subject_create.jsp">成績登録</a></li>
                 <li><a href="grade.jsp">成績参照</a></li>
                 <li><a href="subject_list.jsp">科目管理</a></li>
@@ -167,8 +160,8 @@
         </div>
     </div>
 
-<%-- 💡 2. 外からフッターを取ってくる --%>
-<%@ include file="footer.jsp" %>
+    <%-- 💡 2. 外からフッターを取ってくる --%>
+    <%@ include file="footer.jsp" %>
 
 </body>
 </html>
