@@ -3,13 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
     <meta charset="UTF-8">
     <title>得点管理システム - ログイン</title>
     <style>
@@ -63,11 +56,9 @@
             
             <div class="form-group">
                 <label>パスワード</label>
-                <%-- 💡 JavaScriptで操作できるように id="password" を追加しました --%>
                 <input type="password" name="password" id="password" required>
             </div>
             
-            <%-- 💡 パスワード表示切り替えチェックボックスを追加 --%>
             <div class="toggle-password">
                 <label>
                     <input type="checkbox" onclick="togglePassword()"> パスワードを表示
@@ -83,7 +74,7 @@
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
-<%-- 💡 パワードの文字を切り替える簡単なスクリプト --%>
+<%-- 💡 パスワードの文字を切り替える簡単なスクリプト --%>
 <script>
     function togglePassword() {
         var passInput = document.getElementById("password");

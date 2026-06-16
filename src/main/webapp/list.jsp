@@ -1,97 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-<meta charset="UTF-8">
-<title>得点管理システム - 成績管理</title>
+    <meta charset="UTF-8">
+    <title>得点管理システム - 成績管理</title>
 
-<style>
-body {
-    font-family: sans-serif;
-    margin: 0;
-    background-color: #fff;
-}
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            background-color: #fff;
+        }
 
-/* ⚠️ ここにあった古い header の CSS は消しました */
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
 
-.container {
-    display: flex;
-    min-height: 100vh;
-}
+        .sidebar {
+            width: 180px;
+            padding: 20px;
+            border-right: 1px solid #ccc;
+        }
 
-.sidebar {
-    width: 180px;
-    padding: 20px;
-    border-right: 1px solid #ccc;
-}
+        .sidebar a {
+            display: block;
+            margin-bottom: 10px;
+        }
 
-.sidebar a {
-    display: block;
-    margin-bottom: 10px;
-}
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
 
-.main-content {
-    flex-grow: 1;
-    padding: 20px;
-}
+        .search-area {
+            border: 1px solid #ccc;
+            padding: 15px;
+        }
 
-.search-area {
-    border: 1px solid #ccc;
-    padding: 15px;
-}
+        .search-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
 
-.search-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-}
+        .form-row {
+            display: flex;
+            align-items: end;
+            gap: 15px;
+        }
 
-.form-row {
-    display: flex;
-    align-items: end;
-    gap: 15px;
-}
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
+        .form-group label {
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
 
-.form-group label {
-    margin-bottom: 5px;
-    font-size: 13px;
-}
+        input[type="text"],
+        select {
+            width: 140px;
+            height: 30px;
+        }
 
-input[type="text"],
-select {
-    width: 140px;
-    height: 30px;
-}
+        .subject-select {
+            width: 180px;
+        }
 
-.subject-select {
-    width: 180px;
-}
-
-.btn {
-    background-color: #666;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    height: 32px;
-    padding: 0 15px;
-    cursor: pointer;
-}
-</style>
+        .btn {
+            background-color: #666;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            height: 32px;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-
 <body>
 
 <%-- 💡 1. 外からヘッダーを取ってくる --%>

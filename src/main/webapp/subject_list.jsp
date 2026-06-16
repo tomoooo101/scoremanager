@@ -22,7 +22,6 @@
         ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
     </div>
 </header>
-
     <meta charset="UTF-8">
     <title>得点管理システム</title>
     <style>

@@ -2,13 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
     <meta charset="UTF-8">
     <title>得点管理システム</title>
     <style>
@@ -62,7 +55,6 @@
         .login-link a:hover {
             color: #0a58ca;
         }
-
     </style>
 </head>
 <body>
@@ -70,21 +62,18 @@
 <%-- 💡 1. 外からヘッダーを取ってくる --%>
 <%@ include file="header.jsp" %>
 
-    <div class="container">
-        
-        <div class="title-bar">ログアウト</div>
-        
-        <div class="alert-success">ログアウトしました</div>
+<div class="container">
+    <!-- ① 見出し -->
+    <div class="title-bar">ログアウト</div>
+    
+    <!-- ② 緑色のメッセージバー -->
+    <div class="alert-success">ログアウトしました</div>
 
-    <nav class="sidebar">    
-        <div class="login.jsp">
-        
-        <div class="login-link">
-        
-            <a href="login.jsp">ログイン</a>
-        </div>
-     </nav>   
+    <!-- ③ ログイン画面へのリンク（タグの乱れを綺麗に整理しました） -->
+    <div class="login-link">
+        <a href="login.jsp">ログイン</a>
     </div>
+</div>
 
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
