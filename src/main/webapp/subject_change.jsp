@@ -1,39 +1,116 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
+<%@ page contentType="text/html; charset=UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>科目変更 - 成績管理システム</title>
+<meta charset="UTF-8">
+<title>科目情報変更</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body{
+    background:#f5f5f5;
+}
+
+.header{
+    background:#e9edf4;
+    padding:15px;
+}
+
+.sidebar{
+    width:180px;
+    float:left;
+    padding-top:20px;
+}
+
+.content{
+    margin-left:200px;
+    min-height:400px;
+    border-left:1px solid #ddd;
+    padding-left:20px;
+}
+
+.footer{
+    background:#e9e9e9;
+    text-align:center;
+    margin-top:50px;
+    padding:10px;
+    clear:both;
+}
+
+.title-bar{
+    background:#eeeeee;
+    padding:5px 10px;
+    margin-bottom:20px;
+}
+</style>
+
 </head>
 <body>
 
-    <h2>科目情報変更</h2>
+<div class="container">
 
-    <c:if test="${not empty error}">
-        <p style="color: red;">${error}</p>
-    </c:if>
+    <!-- ヘッダー -->
+<%@ include file="header.jsp" %>
 
-    <form action="SubjectUpdate.action" method="post">
-        <table>
-            <tr>
-                <th>科目コード</th>
-                <td>
-                    <input type="text" name="cd" value="${subject.cd}" readonly style="background-color: #e9e9e9;">
-                </td>
-            </tr>
-            <tr>
-                <th>科目名</th>
-                <td>
-                    <input type="text" name="name" value="${subject.name}" size="20" maxlength="20" required>
-                </td>
-            </tr>
-        </table>
+    <!-- サイドメニュー -->
+    <div class="sidebar">
+        <div><a href="menu.jsp">メニュー</a></div>
+        <div><a href="student_list.jsp">学生管理</a></div>
+        <div><a href="test_regist.jsp">成績管理</a></div>
+        <div><a href="test_list.jsp">成績参照</a></div>
+        <div><a href="subject_list.jsp">科目管理</a></div>
+    </div>
 
-        <br>
-        <button type="submit">変更</button>
-        <a href="subject_list.jsp">戻る</a>
-    </form>
+    <!-- メイン -->
+    <div class="content">
 
+        <div class="title-bar">
+            <strong>科目情報変更</strong>
+        </div>
+
+        <form action="SubjectChangeAction" method="post">
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">
+                    科目コード
+                </label>
+
+                <div class="col-sm-10">
+                    F02
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">
+                    科目名
+                </label>
+
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        name="subjectName"
+                        class="form-control"
+                        value="Javaプログラミング基礎">
+                </div>
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary btn-sm">
+                変更
+            </button>
+
+        </form>
+
+        <div class="mt-2">
+            <a href="subject_list.jsp">戻る</a>
+        </div>
+
+    </div>
+
+</div>
+
+<%@ include file="footer.jsp" %>
 </body>
 </html>
