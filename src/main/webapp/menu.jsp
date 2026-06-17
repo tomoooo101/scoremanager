@@ -20,13 +20,6 @@
 %>
 <!DOCTYPE html>
 <html>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
 <head>
     <meta charset="UTF-8">
     <title>得点管理システム - メニュー</title>
@@ -39,35 +32,12 @@
             color: #333;
         }
 
-
-
         /* メインコンテナ（サイドメニュー + メインコンテンツ） */
         .container { 
             display: flex; 
             min-height: calc(100vh - 120px); /* フッターの分を考慮 */
         }
 
-        /* 左側サイドメニュー */
-        .side-menu { 
-            width: 180px; 
-            padding: 20px; 
-            border-right: 1px solid #ccc; 
-        }
-        .side-menu ul { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-        }
-        .side-menu li { 
-            margin-bottom: 15px; 
-            font-size: 14px;
-        }
-        .side-menu a { 
-            text-decoration: none; 
-            color: #0066cc; 
-        }
-        .side-menu a:hover { 
-            text-decoration: underline; 
         }
         .sub-menu {
             padding-left: 15px;
@@ -156,21 +126,19 @@
             font-size: 18px;
             font-weight: bold;
         }
-
-
     </style>
 </head>
 <body>
 
-<%@ include file="header.jsp" %>
 <%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
 <div class="container">
     <nav class="sidebar">
         <ul>
             <li><a href="menu.jsp">メニュー</a></li>
             <li><a href="student_list.jsp">学生管理</a></li>
-            <li><a href="grade.jsp"></a></li>成績管理
+            <li>成績管理
                 <ul class="sub-menu">
                     <li><a href="subject_create.jsp">成績登録</a></li>
                     <li><a href="grade.jsp">成績参照</a></li>
@@ -188,10 +156,10 @@
                 学生管理
             </a>
 
-            <a href="grade.jsp" class="menu-panel panel-score">成績管理
-                成績登録
-                <br>成績参照
-                </div></a>
+            <a href="grade.jsp" class="menu-panel panel-score">
+                <span class="main-label">成績管理</span>
+                <span class="sub-label">成績登録<br>成績参照</span>
+            </a>
 
             <a href="subject_list.jsp" class="menu-panel panel-subject">
                 科目管理

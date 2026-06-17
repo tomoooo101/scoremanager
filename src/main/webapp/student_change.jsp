@@ -2,71 +2,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
+    <meta charset="UTF-8">
+    <title>学生情報変更</title>
 
-<meta charset="UTF-8">
-<title>学生情報変更</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body{
+            background-color:#f5f5f5;
+        }
 
-<style>
-body{
-    background-color:#f5f5f5;
-}
+        .header{
+            background:#e9edf4;
+            padding:15px;
+        }
 
-.header{
-    background:#e9edf4;
-    padding:15px;
-}
+        .content{
+            padding:20px;
+        }
 
-.sidebar{
-    min-height:500px;
-    border-right:1px solid #ddd;
-}
+        .footer{
+            background:#ddd;
+            text-align:center;
+            padding:10px;
+            margin-top:30px;
+        }
 
-.content{
-    padding:20px;
-}
+        .menu-link{
+            display:block;
+            margin-bottom:10px;
+            font-size:14px;
+        }
 
-.footer{
-    background:#ddd;
-    text-align:center;
-    padding:10px;
-    margin-top:30px;
-}
-
-.menu-link{
-    display:block;
-    margin-bottom:10px;
-    font-size:14px;
-}
-
-.form-title{
-    background:#eee;
-    padding:8px;
-    font-weight:bold;
-    margin-bottom:20px;
-}
-</style>
-
+        .form-title{
+            background:#eee;
+            padding:8px;
+            font-weight:bold;
+            margin-bottom:20px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container">
 
     <!-- ヘッダー -->
-   <%-- 💡 1. 外からヘッダーを取ってくる --%>
-<%@ include file="header.jsp" %>
-        <div>
-            大原 太郎　
-            <a href="logout.jsp">ログアウト</a>
-        </div>
-    </div>
+    <%-- 💡 1. 外からヘッダーを取ってくる（直書きされていた大原太郎の文字と不要なdivは消去しました） --%>
+    <%@ include file="header.jsp" %>
 
     <div class="row mt-3">
 
@@ -146,8 +128,8 @@ body{
     </div>
 
     <!-- フッター -->
-<%-- 💡 2. 外からフッターを取ってくる --%>
-<%@ include file="footer.jsp" %>
+    <%-- 💡 2. 外からフッターを取ってくる --%>
+    <%@ include file="footer.jsp" %>
 
 </div>
 

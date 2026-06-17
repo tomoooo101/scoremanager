@@ -1,15 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
     <meta charset="UTF-8">
     <title>科目登録 - 得点管理システム</title>
     <style>
@@ -48,30 +40,6 @@
             margin: 30px auto 100px auto;
             display: flex;
             gap: 4%;
-        }
-        .sidebar {
-            width: 18%;
-            font-size: 14px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar li {
-            margin-bottom: 12px;
-        }
-        .sidebar .menu-category {
-            font-weight: bold;
-            color: #555;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-        .sidebar a {
-            color: #0d6efd;
-            text-decoration: underline;
-            padding-left: 10px;
-            display: inline-block;
         }
         .content {
             width: 78%;
@@ -152,7 +120,7 @@
 </head>
 <body>
 
- <%-- 💡 1. 外からヘッダーを取ってくる --%>
+ <%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
 <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
@@ -161,7 +129,7 @@
             <ul>
                 <li><a href="menu.jsp">メニュー</a></li>
                 <li><a href="student_list.jsp">学生管理</a></li>
-                <li class="grade.jsp">成績管理</li>
+                <li>成績管理</li>
                 <li><a href="subject_create.jsp">成績登録</a></li>
                 <li><a href="grade.jsp">成績参照</a></li>
                 <li><a href="subject_list.jsp">科目管理</a></li>

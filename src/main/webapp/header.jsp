@@ -29,10 +29,10 @@
     }
 </style>
 
+<head>
 <header>
     <h1>得点管理システム</h1>
-    <div>
-        大原 太郎様
-        <a href="logout.jsp">ログアウト</a>
+    <div class="user-info">
+        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
     </div>
 </header>

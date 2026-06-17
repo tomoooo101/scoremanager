@@ -1,28 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%
-    // セッションから安全にユーザー名を取得する記述
-    String userName = "ゲスト";
-    try {
-        Object userObj = session.getAttribute("user");
-        if (userObj != null) {
-            java.lang.reflect.Method method = userObj.getClass().getMethod("getName");
-            Object result = method.invoke(userObj);
-            if (result != null) { userName = result.toString(); }
-        }
-    } catch (Exception e) {
-        userName = "ゲスト";
-    }
-%>
 <!DOCTYPE html>
 <html>
 <head>
-<header>
-    <h1>得点管理システム</h1>
-    <div class="user-info">
-        ${user.name}様 <a href="logout.jsp" class="logout-link">ログアウト</a>
-    </div>
-</header>
-
     <meta charset="UTF-8">
     <title>得点管理システム</title>
     <style>
@@ -33,7 +12,7 @@
             background-color: #fff; 
             color: #333;
         }
-
+..   .
         /* 💻 ヘッダーエリア（大原仕様の淡いブルーとフォントサイズ） */
         header { 
             background-color: #e6f2ff; 
@@ -165,7 +144,7 @@
 </head>
 <body>
 
-<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header と Java コードは消去しました） --%>
 <%@ include file="header.jsp" %>
 
 <div class="container">
@@ -184,7 +163,8 @@
     </nav>
 
     <main class="main-content">
-        <div class="menu-title-box">科目管理</div>
+        <div class="menu-title-box">科目
+        管理</div>
         
         <div class="top-links">
             <a href="student_create.jsp">新規登録</a>
@@ -233,7 +213,9 @@
         </table>
     </main>
 </div>
+
 <%-- 💡 2. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
+
 </body>
 </html>

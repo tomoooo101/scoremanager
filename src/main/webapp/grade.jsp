@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,32 +26,6 @@
             gap: 4%;
             /* 💡 中身が少なくても、フッターを一番下まで押し出す設定 */
             flex: 1;
-        }
-
-        /* 左側メニュー */
-        .sidebar {
-            width: 18%;
-            font-size: 14px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar li {
-            margin-bottom: 12px;
-        }
-        .sidebar .menu-category {
-            font-weight: bold;
-            color: #555;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-        .sidebar a {
-            color: #0d6efd;
-            text-decoration: underline;
-            padding-left: 10px;
-            display: inline-block;
         }
 
         /* 右側コンテンツエリア */
@@ -181,21 +154,13 @@
 </head>
 <body>
 
-<%-- 💡 外からヘッダーを取ってくる --%>
+<%-- 💡 1. 外からヘッダーを取ってくる（重複していた古いヘッダーは消去しました） --%>
 <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
-        <nav class="sidebar">
-            <ul>
-                <li><a href="menu.jsp">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li class="grade.jasp">成績管理</li>
-                <li><a href="student_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
-            </ul>
-        </nav>
+        <%-- 💡 2. 外からサイドバーを取ってくる（ここに共通ファイルをハメ込みました） --%>
+        <%@ include file="sidebar.jsp" %>
 
         <div class="content">
             <div class="title-bar">成績参照</div>
@@ -245,13 +210,18 @@
                 </form>
             </div>
             
+<<<<<<< HEAD
         </div> <%-- 💡 追加：contentの枠を閉じる --%>
         
         <%@ taglib prefix="c"
 uri="jakarta.tags.core" %>
     </div> <%-- 💡 追加：main-wrapperの枠を閉じる --%>
+=======
+        </div>
+    </div>
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
 
-<%-- 💡 外からフッターを取ってくる --%>
+<%-- 💡 3. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
 </body>

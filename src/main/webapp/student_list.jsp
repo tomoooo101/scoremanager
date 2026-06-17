@@ -46,29 +46,6 @@
             min-height: calc(100vh - 70px); 
         }
 
-        /* 📂 左側サイドメニュー */
-        .side-menu { 
-            width: 200px; 
-            padding: 30px 20px; 
-            background-color: #fff;
-        }
-        .side-menu ul { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-        }
-        .side-menu li { 
-            margin-bottom: 20px; 
-            font-size: 16px;
-            color: #333;
-        }
-        .side-menu a { 
-            text-decoration: none; 
-            color: #0066cc; 
-        }
-        .side-menu a:hover { 
-            text-decoration: underline; 
-        }
         .sub-menu {
             padding-left: 0;
             margin-top: 10px;
@@ -226,7 +203,7 @@
                     <li><a href="grade.jsp">成績参照</a></li>
                 </ul>
             </li>
-            <li><a href="SubjectList.action">科目管理</a></li>
+            <li><a href="subject_list.jsp">科目管理</a></li>
         </ul>
     </nav>
 
