@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
 import bean.StudentBean;
 
 public class StudentDao {
@@ -96,5 +97,9 @@ public class StudentDao {
             e.printStackTrace();
             return false;
         }
+    }
+    
+    public List<StudentBean> findAll() {
+        return new ArrayList<>();
     }
 }

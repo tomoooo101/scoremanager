@@ -2,7 +2,7 @@ package bean;
 
 import java.io.Serializable;
 
-public class Teacher implements Serializable {
+public class TeacherBean implements Serializable {
     private static final long serialVersionUID = 1L;
     private String id;
     private String password;
@@ -17,4 +17,4 @@ public class Teacher implements Serializable {
     public void setName(String name) { this.name = name; }
     public String getSchoolCode() { return schoolCode; }
     public void setSchoolCode(String schoolCode) { this.schoolCode = schoolCode; }
-
+}

@@ -6,9 +6,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
 import bean.StudentScoreBean; // 💡 ここをStudentScoreBeanに変更！
 
-public class StudentTestDao {
+public class StudentScoreDao {
     private final String URL = "jdbc:postgresql://localhost:5432/kadai";
     private final String USER = "postgres";
     private final String PASSWORD = "password"; // ★ご自身のパスワードに修正してください
