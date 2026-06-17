@@ -46,31 +46,6 @@
             gap: 4%;
         }
 
-        /* 左側メニュー */
-        .sidebar {
-            width: 18%;
-            font-size: 14px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .sidebar li {
-            margin-bottom: 12px;
-        }
-        .sidebar .menu-category {
-            font-weight: bold;
-            color: #555;
-            margin-top: 15px;
-            margin-bottom: 5px;
-        }
-        .sidebar a {
-            color: #0d6efd;
-            text-decoration: underline;
-            padding-left: 10px;
-            display: inline-block;
-        }
 
         /* 右側コンテンツエリア */
         .content {

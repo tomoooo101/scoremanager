@@ -17,12 +17,6 @@
             padding:15px;
         }
 
-        .sidebar{
-            width:180px;
-            float:left;
-            padding-top:20px;
-        }
-
         .content{
             margin-left:200px;
             min-height:400px;

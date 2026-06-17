@@ -17,17 +17,6 @@
             min-height: 100vh;
         }
 
-        .sidebar {
-            width: 180px;
-            padding: 20px;
-            border-right: 1px solid #ccc;
-        }
-
-        .sidebar a {
-            display: block;
-            margin-bottom: 10px;
-        }
-
         .main-content {
             flex-grow: 1;
             padding: 20px;

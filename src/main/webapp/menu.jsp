@@ -38,27 +38,6 @@
             min-height: calc(100vh - 120px); /* フッターの分を考慮 */
         }
 
-        /* 左側サイドメニュー */
-        .sidebar { 
-            width: 180px; 
-            padding: 20px; 
-            border-right: 1px solid #ccc; 
-        }
-        .sidebar ul { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0;
-        }
-        .sidebar li { 
-            margin-bottom: 15px; 
-            font-size: 14px;
-        }
-        .sidebar a { 
-            text-decoration: none; 
-            color: #0066cc; 
-        }
-        .sidebar a:hover { 
-            text-decoration: underline; 
         }
         .sub-menu {
             padding-left: 15px;

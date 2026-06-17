@@ -17,11 +17,6 @@
             padding:15px;
         }
 
-        .sidebar{
-            min-height:500px;
-            border-right:1px solid #ddd;
-        }
-
         .content{
             padding:20px;
         }
