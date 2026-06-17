@@ -12,40 +12,20 @@
             padding: 0;
             background-color: #ffffff;
             color: #333333;
-        }
-
-        /* ヘッダー */
-        header {
-            background-color: #eef4ff;
-            padding: 20px 15%;
-            border-bottom: 1px solid #d0d7de;
+            /* フッター最下部固定のための設定 */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .user-info a {
-            color: #0d6efd;
-            text-decoration: underline;
-            margin-left: 10px;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* 左右2カラムのレイアウト */
+        /* 💡 左右2カラムのレイアウト（他の画面と共通の幅・余白に統一しました） */
         .main-wrapper {
             width: 75%;
-            margin: 30px auto 100px auto;
+            margin: 30px auto 0 auto;
             display: flex;
             gap: 4%;
+            flex: 1;
         }
-
 
         /* 右側コンテンツエリア */
         .content {
@@ -88,38 +68,17 @@
         .link-group a:hover {
             color: #0a58ca;
         }
-
-        /* フッター */
-        footer {
-            background-color: #e2e2e2;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
-        }
     </style>
 </head>
 <body>
 
-    <%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
-    <%@ include file="header.jsp" %>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
-        <nav class="sidebar">
-            <ul>
-                <li><a href="menu.jsp">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li>成績管理</li>
-                <li><a href="subject_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
-            </ul>
-        </nav>
+        <%-- 💡 2. 外からサイドバーを取ってくる（古いサイドバーHTMLは綺麗に消去しました） --%>
+        <%@ include file="sidebar.jsp" %>
 
         <div class="content">
             
@@ -135,8 +94,8 @@
         </div>
     </div>
 
-    <%-- 💡 2. 外からフッターを取ってくる --%>
-    <%@ include file="footer.jsp" %>
+<%-- 💡 3. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>

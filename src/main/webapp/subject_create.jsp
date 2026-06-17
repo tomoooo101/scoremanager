@@ -12,41 +12,30 @@
             padding: 0;
             background-color: #ffffff;
             color: #333333;
-        }
-        header {
-            background-color: #eef4ff;
-            padding: 20px 15%;
-            border-bottom: 1px solid #d0d7de;
+            /* フッター最下部固定のための設定 */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
         }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .user-info a {
-            color: #0d6efd;
-            text-decoration: underline;
-            margin-left: 10px;
-        }
+
+        /* 💡 左右2カラムのレイアウト（他の画面と共通の幅・余白に完全統一しました） */
         .main-wrapper {
             width: 75%;
-            margin: 30px auto 100px auto;
+            margin: 30px auto 0 auto;
             display: flex;
             gap: 4%;
+            flex: 1;
         }
+
+        /* 右側コンテンツエリア */
         .content {
             width: 78%;
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
+
+        /* ① 科目情報登録の見出し */
         .title-bar {
             background-color: #f0f0f0;
             padding: 12px 20px;
@@ -54,6 +43,8 @@
             font-weight: bold;
             border-radius: 4px;
         }
+
+        /* エラーメッセージ表示 */
         .alert-error {
             background-color: #f8d7da;
             color: #842029;
@@ -61,80 +52,80 @@
             font-size: 14px;
             border-radius: 4px;
         }
+
+        /* 📝 入力フォームのスタイル設定 */
         .form-group {
             margin-bottom: 15px;
         }
         .form-group label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 14px;
+            color: #444;
         }
         .form-control {
             width: 50%;
-            padding: 8px;
+            min-width: 300px; /* 💡 画面が縮んだ時につぶれないよう最低幅を設定 */
+            padding: 8px 12px;
             font-size: 14px;
-            border: 1px solid #ccc;
+            border: 1px solid #ced4da;
             border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .form-control:focus {
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
         }
         .form-text {
             font-size: 12px;
             color: #666;
-            margin-top: 3px;
+            margin-top: 5px;
         }
+
+        /* 登録ボタン */
         .btn-submit {
-            background-color: #6c757d;
+            background-color: #555555;
             color: white;
             border: none;
-            padding: 8px 20px;
+            padding: 8px 24px;
             font-size: 14px;
+            font-weight: bold;
             border-radius: 4px;
             cursor: pointer;
+            margin-top: 10px;
         }
         .btn-submit:hover {
-            background-color: #5c636a;
+            background-color: #444444;
         }
+
+        /* 下部リンクエリア */
         .link-group {
             display: flex;
             gap: 40px;
             padding-left: 5px;
-            margin-top: 10px;
+            margin-top: 15px;
         }
         .link-group a {
             color: #0d6efd;
             text-decoration: underline;
             font-size: 14px;
         }
-        footer {
-            background-color: #e2e2e2;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            width: 100%;
-            position: fixed;
-            bottom: 0;
-            left: 0;
+        .link-group a:hover {
+            color: #0a58ca;
         }
     </style>
 </head>
 <body>
 
- <%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
+<%-- 💡 1. 外から共通ヘッダーを取ってくる（直書きの古いheader用スタイルは削除しました） --%>
 <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
-        <nav class="sidebar">
-            <ul>
-                <li><a href="menu.jsp">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li>成績管理</li>
-                <li><a href="subject_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
-            </ul>
-        </nav>
+        <%-- 💡 2. 外から共通サイドバーを取ってくる（古いサイドバーHTMLは綺麗に消去しました） --%>
+        <%@ include file="sidebar.jsp" %>
 
         <div class="content">
             
@@ -145,7 +136,7 @@
                 <div class="alert-error">${error}</div>
             </c:if>
             
-            <%-- 送信先は Action クラスに合わせて「SubjectCreate.action」 --%>
+            <%-- 登録フォーム --%>
             <form action="SubjectCreate.action" method="post">
                 <div class="form-group">
                     <label for="cd">科目コード</label>
@@ -168,7 +159,7 @@
         </div>
     </div>
 
-<%-- 💡 2. 外からフッターを取ってくる --%>
+<%-- 💡 3. 外から共通フッターを取ってくる（位置固定を壊す古いfooter用スタイルは削除しました） --%>
 <%@ include file="footer.jsp" %>
 
 </body>

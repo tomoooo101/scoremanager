@@ -1,137 +1,195 @@
-<%@ page contentType="text/html; charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>学生情報変更</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
-        body{
-            background-color:#f5f5f5;
+        /* 全体のスタイル設定 */
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            color: #333333;
+            /* フッター最下部固定のための設定 */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .header{
-            background:#e9edf4;
-            padding:15px;
+        /* 💡 左右2カラムのレイアウト（他の画面と完全に共通化） */
+        .main-wrapper {
+            width: 75%;
+            margin: 30px auto 0 auto;
+            display: flex;
+            gap: 4%;
+            flex: 1;
         }
 
-        .content{
-            padding:20px;
+        /* 右側コンテンツエリア */
+        .content {
+            width: 78%;
         }
 
-        .footer{
-            background:#ddd;
-            text-align:center;
-            padding:10px;
-            margin-top:30px;
+        /* 💡 見出し枠（グレーの背景枠にして他画面と統一） */
+        .title-bar {
+            background-color: #f0f0f0;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 30px;
         }
 
-        .menu-link{
-            display:block;
-            margin-bottom:10px;
-            font-size:14px;
+        /* 📝 入力フォームエリア全体の囲み */
+        .form-box {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .form-title{
-            background:#eee;
-            padding:8px;
-            font-weight:bold;
-            margin-bottom:20px;
+        /* 入力項目の各行 */
+        .form-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        /* 左側のラベル */
+        .form-label {
+            width: 120px;
+            font-size: 15px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        /* 右側の入力コントロール */
+        .form-input-container {
+            flex-grow: 1;
+        }
+
+        /* 固定テキスト（入学年度・学生番号用） */
+        .plain-text {
+            font-size: 16px;
+            color: #333;
+            padding: 6px 0;
+            display: inline-block;
+        }
+
+        /* 入力テキストボックス・セレクトボックス */
+        .input-field {
+            width: 100%;
+            max-width: 300px;
+            height: 36px;
+            padding: 6px 12px;
+            font-size: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* 在学中チェックボックスの行 */
+        .checkbox-row {
+            margin-left: 120px;
+            margin-bottom: 25px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .checkbox-row input {
+            margin-right: 8px;
+            transform: scale(1.2);
+            vertical-align: middle;
+        }
+
+        /* 変更ボタン */
+        .btn-submit {
+            background-color: #0066cc;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-left: 120px; /* ラベルの幅と合わせる */
+        }
+        .btn-submit:hover {
+            background-color: #0052a3;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
+<%@ include file="header.jsp" %>
 
-    <!-- ヘッダー -->
-    <%-- 💡 1. 外からヘッダーを取ってくる（直書きされていた大原太郎の文字と不要なdivは消去しました） --%>
-    <%@ include file="header.jsp" %>
+    <%-- 💡 2. 外枠を他の画面と共通の「main-wrapper」に統一 --%>
+    <div class="main-wrapper">
 
-    <div class="row mt-3">
+        <%-- 💡 3. 外からサイドバーを取ってくる（古いBootstrap用のメニューリンクはすべて消去しました） --%>
+        <%@ include file="sidebar.jsp" %>
 
-        <!-- 左メニュー -->
-        <div class="col-md-2 sidebar">
+        <%-- 💡 4. 右側エリアを「content」に統一 --%>
+        <div class="content">
 
-            <a href="menu.jsp">メニュー</a>
-            <a href="student_list.jsp">学生管理</a>
-            <a href="grade.jsp">成績管理</a>
-            <a href="subject_create.jsp">成績登録</a>
-            <a href="grade.jsp">成績参照</a>
-            <a href="subject_create.jsp">科目管理</a>
+            <div class="title-bar">学生情報変更</div>
 
-        </div>
+            <%-- すっきりした大原仕様のフォームにデザインを調整 --%>
+            <div class="form-box">
+                <form action="StudentUpdateExecute.action" method="post">
 
-        <!-- メイン -->
-        <div class="col-md-10 content">
+                    <div class="form-row">
+                        <div class="form-label">入学年度</div>
+                        <div class="form-input-container">
+                            <span class="plain-text">2023</span>
+                        </div>
+                    </div>
 
-            <div class="form-title">
-                学生情報変更
+                    <div class="form-row">
+                        <div class="form-label">学生番号</div>
+                        <div class="form-input-container">
+                            <span class="plain-text">123456</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-label">氏名</div>
+                        <div class="form-input-container">
+                            <input type="text" class="input-field" name="name" value="大原次郎">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-label">クラス</div>
+                        <div class="form-input-container">
+                            <select name="classNum" class="input-field">
+                                <option value="211">211</option>
+                                <option value="213">213</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="checkbox-row">
+                        <label>
+                            <input type="checkbox" name="isAttend" checked>
+                            在学中
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-submit">変更</button>
+
+                </form>
             </div>
 
-            <form action="StudentUpdateExecute.action" method="post">
-
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">入学年度</label>
-                    <div class="col-sm-4">
-                        <span class="form-control-plaintext">2023</span>
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">学生番号</label>
-                    <div class="col-sm-4">
-                        <span class="form-control-plaintext">123456</span>
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">氏名</label>
-                    <div class="col-sm-8">
-                        <input type="text"
-                               class="form-control"
-                               name="name"
-                               value="大原次郎">
-                    </div>
-                </div>
-
-                <div class="mb-3 row">
-                    <label class="col-sm-2 col-form-label">クラス</label>
-                    <div class="col-sm-8">
-                        <select name="classNum" class="form-select">
-                            <option value="211">211</option>
-                            <option value="213">213</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label>
-                        <input type="checkbox"
-                               name="isAttend"
-                               checked>
-                        在学中
-                    </label>
-                </div>
-
-                <button type="submit"
-                        class="btn btn-primary">
-                    変更
-                </button>
-
-            </form>
-
         </div>
-
     </div>
 
-    <!-- フッター -->
-    <%-- 💡 2. 外からフッターを取ってくる --%>
-    <%@ include file="footer.jsp" %>
-
-</div>
+<%-- 💡 5. 外からフッターを取ってくる --%>
+<%@ include file="footer.jsp" %>
 
 </body>
 </html>
