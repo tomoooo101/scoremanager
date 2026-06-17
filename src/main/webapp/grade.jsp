@@ -210,8 +210,16 @@
                 </form>
             </div>
             
+<<<<<<< HEAD
+        </div> <%-- 💡 追加：contentの枠を閉じる --%>
+        
+        <%@ taglib prefix="c"
+uri="jakarta.tags.core" %>
+    </div> <%-- 💡 追加：main-wrapperの枠を閉じる --%>
+=======
         </div>
     </div>
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
 
 <%-- 💡 3. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
