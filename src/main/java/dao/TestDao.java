@@ -85,4 +85,53 @@ public class TestDao {
             return false;
         }
     }
+    
+    public List<TestBean> getList() {
+
+        List<TestBean> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM 成績";
+
+        try {
+            Class.forName("org.postgresql.Driver");
+
+            Connection conn =
+                DriverManager.getConnection(
+                    URL, USER, PASSWORD);
+
+            PreparedStatement ps =
+                conn.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+
+                TestBean bean =
+                    new TestBean();
+
+                bean.setStudentNo(
+                    rs.getString("学生番号"));
+
+                bean.setSubjectCd(
+                    rs.getString("科目コード"));
+
+                bean.setNo(
+                    rs.getInt("回数"));
+
+                bean.setPoint(
+                    rs.getInt("点数"));
+
+                list.add(bean);
+            }
+
+            rs.close();
+            ps.close();
+            conn.close();
+
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return list;
+    }
 }

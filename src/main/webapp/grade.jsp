@@ -246,6 +246,9 @@
             </div>
             
         </div> <%-- 💡 追加：contentの枠を閉じる --%>
+        
+        <%@ taglib prefix="c"
+uri="jakarta.tags.core" %>
     </div> <%-- 💡 追加：main-wrapperの枠を閉じる --%>
 
 <%-- 💡 外からフッターを取ってくる --%>
