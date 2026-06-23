@@ -1,13 +1,12 @@
 package dao;
-
+            
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.List;
-import bean.ClassNumBean;
-
+import java.util.List;     
+                      
 public class ClassNumDao {
     private final String URL = "jdbc:postgresql://localhost:5432/kadai";
     private final String USER = "postgres";
