@@ -2,11 +2,13 @@ package tool;
 
 import java.io.IOException;
 import java.util.List;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
 import bean.StudentBean; // 💡 学生情報を格納するBean
 import dao.StudentDao;   // 💡 データベースと通信するDAO（すでに作成されているもの、またはこれから作成するもの）
 

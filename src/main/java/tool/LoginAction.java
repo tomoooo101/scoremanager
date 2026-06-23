@@ -1,13 +1,15 @@
 package tool;
 
 import java.io.IOException;
-import dao.TeacherDao;
-import bean.Teacher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+
+import bean.TeacherBean;
+import dao.TeacherDao;
 
 @WebServlet("/Login.action") // ログイン用のURLを設定します
 public class LoginAction extends HttpServlet {
@@ -32,7 +34,7 @@ public class LoginAction extends HttpServlet {
         
         // ② 厨房（DAO）を呼び出して、データベースを調べてもらう
         TeacherDao dao = new TeacherDao();
-        Teacher teacher = dao.login(id, password);
+        TeacherBean teacher = dao.login(id, password);
         
         // ③ 判定結果によって画面遷移（案内）を切り替える
         if (teacher != null) {

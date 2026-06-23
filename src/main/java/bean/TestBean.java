@@ -9,6 +9,7 @@ public class TestBean implements Serializable {
     private int no;
     private int point;
     private String classNum;
+    private String schoolCode;
 
     public TestBean() {
     }
@@ -51,5 +52,13 @@ public class TestBean implements Serializable {
 
     public void setClassNum(String classNum) {
         this.classNum = classNum;
+    }
+    
+    public String getSchoolCode() {
+        return schoolCode;
+    }
+
+    public void setSchoolCode(String schoolCode) {
+        this.schoolCode = schoolCode;
     }
 }

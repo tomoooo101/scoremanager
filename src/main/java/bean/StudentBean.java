@@ -8,6 +8,8 @@ public class StudentBean implements Serializable {
     private String no;
     private String name;
     private String classNum;
+    private boolean isAttend;
+    private String schoolCode;
 
     public StudentBean() {
     }
@@ -42,5 +44,21 @@ public class StudentBean implements Serializable {
 
     public void setClassNum(String classNum) {
         this.classNum = classNum;
+    }
+    
+    public boolean isAttend() {
+        return isAttend;
+    }
+
+    public void setIsAttend(boolean isAttend) {
+        this.isAttend = isAttend;
+    }
+
+    public String getSchoolCode() {
+        return schoolCode;
+    }
+
+    public void setSchoolCode(String schoolCode) {
+        this.schoolCode = schoolCode;
     }
 }

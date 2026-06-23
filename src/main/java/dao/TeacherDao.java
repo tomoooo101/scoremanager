@@ -4,7 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import bean.Teacher;
+
+import bean.TeacherBean;
 
 public class TeacherDao {
     // 💡 画像から判明したH2データベースの正しい接続情報に修正！
@@ -12,8 +13,8 @@ public class TeacherDao {
     private final String USER = "sa";            // H2の標準ユーザー
     private final String PASSWORD = "";          // H2の標準パスワード（空っぽ）
 
-    public Teacher login(String id, String password) {
-        Teacher teacher = null;
+    public TeacherBean login(String id, String password) {
+        TeacherBean teacher = null;
         
         // 💡 テーブル名を日本語の「教員」から、画像に写っている「TEACHER」に変更！
         // 💡 カラム名もH2に合わせて英語（ID, PASSWORD）に直しています
@@ -36,7 +37,7 @@ public class TeacherDao {
 
             try (ResultSet rs = pStmt.executeQuery()) {
                 if (rs.next()) {
-                    teacher = new Teacher();
+                    teacher = new TeacherBean();
                     // 💡 H2からデータを取り出す名前も、英語のカラム名に合わせます
                     teacher.setId(rs.getString("ID"));
                     teacher.setPassword(rs.getString("PASSWORD"));

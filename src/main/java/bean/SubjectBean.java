@@ -34,4 +34,12 @@ public class SubjectBean implements Serializable {
     public void setSchoolCd(String schoolCd) {
         this.schoolCd = schoolCd;
     }
+    
+    public String getSchoolCode() {
+        return schoolCd;
+    }
+
+    public void setSchoolCode(String schoolCode) {
+        this.schoolCd = schoolCode;
+    }
 }

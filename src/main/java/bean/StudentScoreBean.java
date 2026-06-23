@@ -10,6 +10,10 @@ public class StudentScoreBean implements Serializable {
     private String subjectName;
     private int testNo;
     private int point;
+    private String subjectCd;
+    private int no;
+    private String schoolCode;
+
 
     public StudentScoreBean() {
     }
@@ -60,5 +64,29 @@ public class StudentScoreBean implements Serializable {
 
     public void setPoint(int point) {
         this.point = point;
+    }
+    
+    public String getSubjectCd() {
+        return subjectCd;
+    }
+
+    public void setSubjectCd(String subjectCd) {
+        this.subjectCd = subjectCd;
+    }
+
+    public int getNo() {
+        return no;
+    }
+
+    public void setNo(int no) {
+        this.no = no;
+    }
+
+    public String getSchoolCode() {
+        return schoolCode;
+    }
+
+    public void setSchoolCode(String schoolCode) {
+        this.schoolCode = schoolCode;
     }
 }
