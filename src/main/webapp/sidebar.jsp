@@ -45,8 +45,7 @@
     <ul>
         <li><a href="menu.jsp">メニュー</a></li>
         <li><a href="student_list.jsp">学生管理</a></li>
-        <li>
-            成績管理
+        <li><a herf="subject_list.jsp">成績管理</a></li>
             <ul class="sub-menu">
                 <li><a href="subject_create.jsp">成績登録</a></li>
                 <li><a href="grade.jsp">成績参照</a></li>
