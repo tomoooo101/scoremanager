@@ -15,7 +15,7 @@
                                 
         
         
-        <property name="java-output-path" value="/scoremanager/build/classes"/>
+        <property name="java-output-path" value="/scoremanager/src/main/webapp/WEB-INF/classes"/>
                             
     
     
