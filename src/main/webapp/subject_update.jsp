@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,7 +44,6 @@
             border-radius: 8px;
             padding: 30px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
         }
 
         .form-row {
@@ -59,10 +59,6 @@
             color: #555;
         }
 
-        .form-input-container {
-            flex-grow: 1;
-        }
-
         .plain-text {
             font-size: 16px;
             color: #333;
@@ -72,18 +68,13 @@
 
         .input-field {
             width: 100%;
-            max-width: 400px;
+            max-width: 300px;
             height: 36px;
             padding: 6px 12px;
             font-size: 15px;
             border: 1px solid #ced4da;
             border-radius: 4px;
             box-sizing: border-box;
-        }
-        .input-field:focus {
-            border-color: #86b7fe;
-            outline: 0;
-            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
         }
 
         .btn-submit {
@@ -102,16 +93,13 @@
         }
 
         .back-link {
+            margin-top: 20px;
             margin-left: 120px;
-            margin-top: 15px;
         }
         .back-link a {
             color: #0066cc;
             text-decoration: underline;
             font-size: 14px;
-        }
-        .back-link a:hover {
-            color: #004499;
         }
     </style>
 </head>
@@ -126,8 +114,7 @@
             <div class="title-bar">科目情報変更</div>
 
             <div class="form-box">
-                <form action="SubjectUpdate.action" method="post">
-
+                <form action="SubjectUpdateExecute.action" method="post">
                     <div class="form-row">
                         <div class="form-label">科目コード</div>
                         <div class="form-input-container">
@@ -144,9 +131,7 @@
                     </div>
 
                     <button type="submit" class="btn-submit">変更</button>
-
                 </form>
-
                 <div class="back-link">
                     <a href="subject_list.jsp">戻る</a>
                 </div>

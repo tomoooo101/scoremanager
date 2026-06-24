@@ -12,43 +12,24 @@
             padding: 0;
             background-color: #ffffff;
             color: #333333;
-        }
-
-        /* ヘッダー */
-        header {
-            background-color: #eef4ff;
-            padding: 20px 15%;
-            border-bottom: 1px solid #d0d7de;
+            /* フッター最下部固定のための設定 */
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 28px;
-            font-weight: bold;
-            color: #1a2a3a;
-        }
-        .user-info {
-            font-size: 14px;
-        }
-        .user-info a {
-            color: #0d6efd;
-            text-decoration: underline;
-            margin-left: 10px;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* 左右2カラムのレイアウト */
+        /* 💡 左右2カラムのレイアウト（他の画面と共通の幅・余白に完全統一しました） */
         .main-wrapper {
-            width: 70%;
-            margin: 30px auto 100px auto; /* 下部にフッター分の余白 */
+            width: 75%;
+            margin: 30px auto 0 auto;
             display: flex;
-            gap: 5%;
+            gap: 4%;
+            flex: 1;
         }
 
         /* 右側コンテンツエリア */
         .content {
-            width: 75%;
+            width: 78%;
         }
 
         /* ① 学生情報変更の見出し */
@@ -82,6 +63,7 @@
         /* テキスト入力欄 */
         .form-control {
             width: 100%;
+            max-width: 400px; /* 💡 綺麗に見えるよう、少し横幅を制限しました */
             padding: 8px 12px;
             font-size: 14px;
             border: 1px solid #ced4da;
@@ -97,6 +79,7 @@
         /* セレクトボックス */
         .form-select {
             width: 100%;
+            max-width: 400px; /* 💡 横幅をテキストボックスと統一 */
             padding: 8px 12px;
             font-size: 14px;
             border: 1px solid #ced4da;
@@ -109,12 +92,16 @@
         .form-check {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 8px;
+        }
+        .form-check label {
+            margin-bottom: 0; /* 横並びにするため下マージンをリセット */
         }
         .form-check input {
             margin: 0;
             width: 16px;
             height: 16px;
+            order: -1; /* 💡 ラベルの左側にチェックボックスが来るように配置 */
         }
 
         /* ボタン関係 */
@@ -122,54 +109,36 @@
             background-color: #0d6efd;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 8px 24px;
             font-size: 14px;
             border-radius: 4px;
             cursor: pointer;
             margin-top: 10px;
+            font-weight: bold;
         }
         .btn-submit:hover {
             background-color: #0b5ed7;
         }
 
         .back-link {
-            margin-top: 15px;
+            margin-top: 20px;
         }
         .back-link a {
             color: #0d6efd;
             text-decoration: underline;
             font-size: 14px;
         }
-
-        /* フッター */
-        footer {
-            background-color: #e2e2e2;
-            text-align: center;
-            padding: 15px 0;
-            font-size: 12px;
-            color: #666666;
-            width: 100%;
-            margin-top: auto;
-        }
     </style>
 </head>
 <body>
 
-<%-- 💡 1. 外からヘッダーを取ってくる（上の重複していた古い header は消去しました） --%>
+<%-- 💡 1. 外からヘッダーを取ってくる --%>
 <%@ include file="header.jsp" %>
 
     <div class="main-wrapper">
         
-        <nav class="sidebar">
-            <ul>
-                <li><a href="menu.jsp">メニュー</a></li>
-                <li><a href="student_list.jsp">学生管理</a></li>
-                <li>成績管理</li>
-                <li><a href="subject_create.jsp">成績登録</a></li>
-                <li><a href="grade.jsp">成績参照</a></li>
-                <li><a href="subject_list.jsp">科目管理</a></li>
-            </ul>
-        </nav>
+        <%-- 💡 2. 外からサイドバーを取ってくる（古いサイドバーHTMLと古いヘッダーCSSは綺麗に消去しました） --%>
+        <%@ include file="sidebar.jsp" %>
 
         <div class="content">
             <div class="title-bar">学生情報変更</div>
@@ -190,7 +159,7 @@
 
                 <div class="form-group">
                     <label for="name">氏名</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="氏名を入力してください" required>
+                    <input type="text" id="name" name="name" class="form-control" value="大原次郎" placeholder="氏名を入力してください" required>
                 </div>
 
                 <div class="form-group">
@@ -216,7 +185,7 @@
         
     </div>
 
-<%-- 💡 2. 外からフッターを取ってくる --%>
+<%-- 💡 3. 外からフッターを取ってくる --%>
 <%@ include file="footer.jsp" %>
 
 </body>
