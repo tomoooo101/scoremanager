@@ -19,11 +19,24 @@
         
         
         
+<<<<<<< HEAD
         <property name="java-output-path" value="/scoremanager/build/classes"/>
         <property name="context-root" value="scoremanager"/>
                                             
     
     
+=======
+<<<<<<< HEAD
+        <property name="java-output-path" value="/scoremanager/src/main/webapp/WEB-INF/classes"/>
+                            
+=======
+        <property name="java-output-path" value="/scoremanager/build/classes"/>
+        <property name="context-root" value="scoremanager"/>
+                                            
+    
+    
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
+>>>>>>> branch 'master' of https://github.com/tomoooo101/scoremanager.git
     
     
     </wb-module>
